@@ -1,0 +1,62 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add react-native-firebase
+
+PATH: 
+  C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\nodejs\;C:\Program Files\Java\jdk1.8.0_51\bin;C:\Program Files\MongoDB\Server\4.2\bin;D:\SDK\platform-tools;D:\SDK\tools;C:\Program Files (x86)\Yarn\bin\;C:\Users\Edson Paulo\AppData\Local\Microsoft\WindowsApps;;C:\Users\Edson Paulo\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Edson Paulo\AppData\Roaming\npm;C:\Users\Edson Paulo\AppData\Local\Yarn\bin
+
+Yarn version: 
+  1.22.0
+
+Node version: 
+  10.15.3
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: getaddrinfo ENOTFOUND registry.yarnpkg.com registry.yarnpkg.com:443
+      at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:56:26)
+
+npm manifest: 
+  {
+    "main": "node_modules/expo/AppEntry.js",
+    "scripts": {
+      "start": "expo start",
+      "android": "expo start --android",
+      "ios": "expo start --ios",
+      "web": "expo start --web",
+      "eject": "expo eject"
+    },
+    "dependencies": {
+      "@react-native-community/masked-view": "0.1.5",
+      "@react-navigation/bottom-tabs": "^5.0.5",
+      "@react-navigation/drawer": "^5.0.5",
+      "@react-navigation/native": "^5.0.3",
+      "@react-navigation/stack": "^5.0.3",
+      "axios": "^0.19.2",
+      "expo": "~36.0.0",
+      "native-base": "^2.13.8",
+      "react": "~16.9.0",
+      "react-dom": "~16.9.0",
+      "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.0.tar.gz",
+      "react-native-web": "~0.11.7",
+      "react-native-gesture-handler": "^1.5.3",
+      "react-native-reanimated": "~1.4.0",
+      "react-native-safe-area-context": "0.6.0",
+      "react-native-screens": "2.0.0-alpha.12",
+      "react-native-vector-icons": "^6.6.0",
+      "styled-components": "^5.0.1",
+      "expo-font": "~8.0.0"
+    },
+    "devDependencies": {
+      "babel-preset-expo": "~8.0.0",
+      "@babel/core": "^7.0.0"
+    },
+    "private": true
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
