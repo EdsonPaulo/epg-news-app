@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add react-native-firebase
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add react-native-router-flux
 
 PATH: 
   C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\nodejs\;C:\Program Files\Java\jdk1.8.0_51\bin;C:\Program Files\MongoDB\Server\4.2\bin;D:\SDK\platform-tools;D:\SDK\tools;C:\Program Files (x86)\Yarn\bin\;C:\Users\Edson Paulo\AppData\Local\Microsoft\WindowsApps;;C:\Users\Edson Paulo\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Edson Paulo\AppData\Roaming\npm;C:\Users\Edson Paulo\AppData\Local\Yarn\bin
