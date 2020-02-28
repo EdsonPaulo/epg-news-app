@@ -22,27 +22,28 @@ class index extends Component {
             error: null,
         };
     }
-    componentDidMount() {
+    async componentDidMount() {
         this.setState({ isLoading: true });
-        axios.get(API)
-        .then(result => { 
+        
+        try {
+            const result = await axios.get(API)
             this.setState({
                 news: result.data.articles,
                 isLoading: false
-            })
-        })
-        .catch(error => { 
+            });
+        }
+        catch (error) { 
             this.setState({
                 error,
                 isLoading: false,
             })
-            alert(error)
-        });
+            alert(error);
+        }
     }
 
     render () {
         return (
-            <View>
+            <View>  
             {
                 this.state.news.map( article => {
                     return (
@@ -56,6 +57,22 @@ class index extends Component {
                     
                     )
                 })
+            
+            /**
+                const App = ({ data, isLoading, error }) => {
+                    if (!data) return <p>No data yet ...</p>;
+                    if (error) return <p>{error.message}</p>;
+                    if (isLoading) return <p>Loading ...</p>;
+                    return (
+                        {data.hits.map(hit =>
+                          <li key={hit.objectID}>
+                            <a href={hit.url}>{hit.title}</a>
+                          </li>
+                        )}
+                    );
+                  }
+             */
+
             }
             </View>
         )
