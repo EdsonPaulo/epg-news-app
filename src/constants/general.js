@@ -5,8 +5,15 @@ import { StatusBar } from 'react-native';
 
 const general = {
   background: {
+    flex: 1,
     backgroundColor: colors.bgColor,
-    paddingTop: StatusBar.currentHeight
+
+    borderTopWidth: StatusBar.currentHeight,
+    borderTopColor: colors.primaryDark,
+  },
+  container: {
+    padding: metrics.baseMargin,
+
   },
   card: {
     borderRadius: metrics.baseRadius,

@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-import { Text, View } from 'react-native'
+import { Text, View, StatusBar, Button } from 'react-native'
+import { general } from '../../constants';
+import { Actions } from 'react-native-router-flux';
 
 
 export default class index extends Component {
@@ -10,14 +12,20 @@ export default class index extends Component {
             allowContinue: true,
     
         };
-      }
+      } 
     
     render() {
         return (
-            <View>
+            
+            <View style={general.background}>
+               
+               
                 <Text> WELCOME </Text>
+                <Button color={'red'} onPress={() => {
+                    Actions.push('home')
+                }} title='IR PARA A HOME' />
                 {
-                    /**
+                    /*
                     (this.state.isLogged == false && this.state.allowContinue) ? (
                         <>
                         <Stack.Screen name="SignIn" component={SignInScreen} />

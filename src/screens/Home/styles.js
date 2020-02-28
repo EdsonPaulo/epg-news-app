@@ -23,9 +23,7 @@ const styles = StyleSheet.create({
     },
     activeTabTextStyle: {
         fontWeight: 'bold',
-    }
-
-
+    },
 
 })
 
