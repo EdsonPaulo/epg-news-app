@@ -1,17 +1,17 @@
 import React, { Component } from 'react'
 import { Text, View } from 'react-native'
 
-import styles from './styles'
-
 import API from '../../../services/NewsAPI' 
 
+import styles from './styles'
 
-export default class Science extends Component {
+export default class TopNews extends Component {
     render() {
         return (
             <View>
-                <Text> SCIENCE </Text>
-                <API category='science' />
+                <Text> Top </Text>
+
+                <API />
 
             </View>
         )

@@ -1,17 +1,21 @@
 import React, { Component } from 'react'
-import { Text, StyleSheet, View } from 'react-native'
+import { Text, View } from 'react-native'
 
 import API from '../../../services/NewsAPI' 
+
+                
+import styles from './styles'
+
 
 export default class Technology extends Component {
     render() {
         return (
-            <View>
+            <View style={styles.container}>
                 <Text> TECHNOLOGY </Text>
-                <API />
+                <API category='technology' />
+
             </View>
         )
     }
 }
 
-const styles = StyleSheet.create({})

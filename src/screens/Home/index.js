@@ -11,7 +11,7 @@ import { HomeTabBar, HomeBottomBar, HomeDrawer} from '../../components';
 import ScrollableTabBar from '../../components/ScrollableTabBar';
 
 import styles from './styles'
-import {Science, Technology, Sport, Entertainment} from './Content';
+import {Science, Technology, Sport, Entertainment, TopNews} from './Content';
 
 export default class index extends Component {
     
@@ -30,15 +30,15 @@ export default class index extends Component {
                 renderTabBar={() => <ScrollableTabBar />}
             >
                 <ScrollView tabLabel='Top' > 
-                    <View style={styles.card}>
-                        <Text>News</Text>
-                        <Text>ALL</Text> 
+                    <View style={{ alignItems: 'center', justifyContent: 'center'}}>
+                        <Text>Top</Text> 
+                        <TopNews />
+
                     </View>
                 </ScrollView>
 
                 <ScrollView tabLabel='Tecnologia' > 
                     <View style={styles.card}>
-                        <Text>News</Text>
                         <Text>TECNOLOGIA</Text> 
                         <Technology />
                     </View>
