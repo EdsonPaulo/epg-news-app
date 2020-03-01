@@ -11,7 +11,6 @@ export default class Technology extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text> TECHNOLOGY </Text>
                 <API category='technology' />
 
             </View>

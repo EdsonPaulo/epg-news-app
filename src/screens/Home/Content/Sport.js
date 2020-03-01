@@ -10,8 +10,7 @@ import API from '../../../services/NewsAPI'
 export default class Sport extends Component {
     render() {
         return (
-            <View>
-                <Text> SPORTS </Text>
+            <View style={styles.container}>
                 <API category='sports' />
             </View>
         )

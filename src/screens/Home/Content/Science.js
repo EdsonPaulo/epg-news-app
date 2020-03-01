@@ -9,9 +9,8 @@ import API from '../../../services/NewsAPI'
 export default class Science extends Component {
     render() {
         return (
-            <View>
-                <Text> SCIENCE </Text>
-                <API category='science' />
+            <View style={styles.container}>
+                <API style={styles.listContainer} category='science' />
 
             </View>
         )

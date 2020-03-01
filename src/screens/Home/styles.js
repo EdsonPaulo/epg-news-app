@@ -9,22 +9,6 @@ const styles = StyleSheet.create({
         backgroundColor: colors.primaryDark,
 
     },
-
-    tabStyle: {
-        backgroundColor: colors.primaryDark,
-        
-    },
-    activeTabStyle: {
-        backgroundColor: colors.primaryDark,
-    },
-
-    tabTextStyle: {
-        fontSize: 16,
-    },
-    activeTabTextStyle: {
-        fontWeight: 'bold',
-    },
-
 })
 
 export default styles;

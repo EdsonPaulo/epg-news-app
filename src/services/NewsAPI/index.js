@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import {NewsArticle} from '../../components'
+import {NewsList} from '../../components'
 
 
 class index extends Component {
@@ -14,31 +14,28 @@ class index extends Component {
         };
     }
     async componentDidMount() {
-        
-        
         const API_KEY = '923fe32cc9b14b15989b4fb574bc57a9';
+        const category = this.props.category;
 
-        let category = this.props.category
-
-        const API = category ? `http://newsapi.org/v2/top-headlines?language=pt%pageSize=100&apiKey=${API_KEY}&category=${category}` : 
-                    `http://newsapi.org/v2/top-headlines?language=pt%pageSize=100&apiKey=${API_KEY}`
+        const API = `http://newsapi.org/v2/top-headlines?country=br&category=${category}&pageSize=100&apiKey=${API_KEY}`;
+        const API2 = `http://newsapi.org/v2/top-headlines?country=pt&category=${category}&pageSize=100&apiKey=${API_KEY}`;
 
         this.setState({ isLoading: true });
         try {
             const result = await axios.get(API)
-            this.setState({ data: result.data.articles, isLoading: false });
+            const result2 = await axios.get(API2)
+            const totData = result.data.articles.concat(result2.data.articles)
+            this.setState({ data: totData, isLoading: false });
         }
         catch (error) { 
             this.setState({ error, isLoading: false })
-            alert(error);
+            //alert(error);
         }
     }
 
-    
-
     render () {
         return (
-            <NewsArticle  { ...this.props } { ...this.state } />
+            <NewsList  { ...this.props } { ...this.state } />
         )
     }
 }

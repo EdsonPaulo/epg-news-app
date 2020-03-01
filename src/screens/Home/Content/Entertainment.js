@@ -8,8 +8,7 @@ import API from '../../../services/NewsAPI'
 export default class Entertainment extends Component {
     render() {
         return (
-            <View>
-                <Text> Entertainment </Text>
+            <View style={styles.container}>
                 <API category='entertainment' />
 
             </View>
