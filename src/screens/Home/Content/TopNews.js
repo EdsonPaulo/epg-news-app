@@ -10,7 +10,7 @@ export default class TopNews extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <API category='general' />
+                <API category='Top' />
             </View>
         )
     }

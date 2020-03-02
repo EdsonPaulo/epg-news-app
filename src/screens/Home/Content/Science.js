@@ -10,7 +10,7 @@ export default class Science extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <API style={styles.listContainer} category='science' />
+                <API style={styles.listContainer} category='Ciência' />
 
             </View>
         )

@@ -8,24 +8,30 @@ class index extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: [],
+            articles: [],
             isLoading: false,
             error: null,
         };
     }
     async componentDidMount() {
         const API_KEY = '923fe32cc9b14b15989b4fb574bc57a9';
-        const category = this.props.category;
+        const tempCategory = this.props.category === 'Top' ? 'general' :
+                this.props.category === 'Tecnologia' ? 'technology' : 
+                this.props.category === 'Ciência' ? 'science' :
+                this.props.category === 'Desporto' ? 'sports' :
+                this.props.category === 'ENTRETIMENTO ' ? 'entertertainment' : 'general';
+        //this.setState({ category:  this.props.category});
 
-        const API = `http://newsapi.org/v2/top-headlines?country=br&category=${category}&pageSize=100&apiKey=${API_KEY}`;
-        const API2 = `http://newsapi.org/v2/top-headlines?country=pt&category=${category}&pageSize=100&apiKey=${API_KEY}`;
+
+        const API = `http://newsapi.org/v2/top-headlines?country=br&category=${tempCategory}&pageSize=100&apiKey=${API_KEY}`;
+        const API2 = `http://newsapi.org/v2/top-headlines?country=pt&category=${tempCategory}&pageSize=100&apiKey=${API_KEY}`;
 
         this.setState({ isLoading: true });
         try {
             const result = await axios.get(API)
             const result2 = await axios.get(API2)
-            const totData = result.data.articles.concat(result2.data.articles)
-            this.setState({ data: totData, isLoading: false });
+            const totalArticles = result.data.articles.concat(result2.data.articles)
+            this.setState({ articles: totalArticles, isLoading: false });
         }
         catch (error) { 
             this.setState({ error, isLoading: false })

@@ -5,12 +5,11 @@ const colors = {
     bgColor: '#f1f2f6',
 
 
-    primaryDark: '#2f3542',
+    primaryDark: '#1e3c72',
     primary: '#57606f',
     primaryLight: '#747d8c', 
 
     accent: '#2a5298',
-    accent: '#023464',
    
     /** 
     #1e3c72   #2a5298 //azul deep

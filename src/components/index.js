@@ -1,6 +1,7 @@
 import HomeDrawer from './HomeDrawer';
-import HomeBottomBar from './HomeBottomBar';
-import NewsList from './NewsList'
+import NewsList from './News/NewsList';
+import TabBarIcon from './TabBarIcon';
+import Sidebar from './Sidebar';
 
 
-export { HomeDrawer, HomeBottomBar, NewsList };
+export { HomeDrawer, NewsList, TabBarIcon, Sidebar };

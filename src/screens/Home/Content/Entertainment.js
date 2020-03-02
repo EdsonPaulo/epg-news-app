@@ -9,7 +9,7 @@ export default class Entertainment extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <API category='entertainment' />
+                <API category='ENTRETIMENTO ' />
 
             </View>
         )

@@ -11,7 +11,7 @@ export default class Sport extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <API category='sports' />
+                <API category='Desporto' />
             </View>
         )
     }

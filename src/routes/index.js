@@ -1,9 +1,18 @@
 'use strict';
-import React from 'react';
-import { View, BackHandler, ToastAndroid, Alert } from 'react-native';
-import {Router, Scene, Actions} from 'react-native-router-flux';
 
-import {Home, Welcome} from '../screens/';
+import React from 'react';
+import {  Text, StyleSheet, View, TouchableOpacity, ScrollView, BackHandler, ToastAndroid, Alert } from 'react-native';
+import { Router, Scene, Tabs, Stack, Drawer, Actions, ActionConst } from 'react-native-router-flux';
+
+
+import {Icon} from 'react-native-elements'
+
+import {Sidebar, TabBarIcon} from '../components';
+
+import { fonts, colors, metrics } from '../constants';
+
+import {Home, WelcomeScreen, SearchScreen, ProfileScreen} from '../screens';
+import {TopNews, Science, Technology, Sport, Entertainment} from '../screens/Home/Content';
 
 
 var backButtonPressedToExit = false;
@@ -20,18 +29,10 @@ export default class index extends React.Component {
 
   onBackPress() {
       if (backButtonPressedToExit) {
-        Alert.alert(
-          'Saindo do APP', 'Deseja sair do app?',
-          [
-            {text: 'Sim', onPress: () => BackHandler.exitApp()},
-            {text: 'Não', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-          ],
-          { cancelable: true });
-          return true;
-        // BackHandler.exitApp()
+          BackHandler.exitApp()
       } 
       else {
-          if (Actions.currentScene !== 'home') {
+          if (Actions.currentScene !== 'main' && Actions.currentScene !== 'home') {
               Actions.pop();
               return true;
           } 
@@ -48,87 +49,53 @@ export default class index extends React.Component {
   render() {
 
     return (
-    	<Router backAndroidHandler={this.onBackPress}>
-        <Scene key="root" hideNavBar>
-      		<Scene key='welcome' component={Welcome} />
-          <Scene key='home' component={Home} initial />
-        </Scene>
-    	</Router>
 
-      
-        /**
-         * 
-         *   
-  <Router
-    createReducer={reducerCreate}
-    onStateChange={stateHandler}
-    getSceneStyle={getSceneStyle}
-    uriPrefix={prefix}>
-    <Overlay key="overlay">
-      <Modal key="modal" hideNavBar transitionConfig={transitionConfig}>
-        <Lightbox key="lightbox">
-          <Stack key="root" hideNavBar titleStyle={{ alignSelf: 'center' }}>
+        <Router backAndroidHandler={this.onBackPress}>
+          
+          <Scene hideNavBar key='root'>
 
-            <Drawer
-              hideNavBar
-              key="drawer"
-              onExit={() => {
-                console.log('Drawer closed');
-              }}
-              onEnter={() => {
-                console.log('Drawer opened');
-              }}
-              contentComponent={DrawerContent}
-              drawerIcon={MenuIcon}
-              drawerWidth={300}>
-              <Scene hideNavBar>
-                <Tabs
-                  key="tabbar"
-                  backToInitial
-                  onTabOnPress={() => {
-                    console.log('Back to initial and also print this');
-                  }}
-                  swipeEnabled
-                  tabBarStyle={styles.tabBarStyle}
-                  activeBackgroundColor="white"
-                  inactiveBackgroundColor="rgba(255, 0, 0, 0.5)">
-                  <Scene
-                    key="main_home"
-                    component={HomeScreen}
-                    title="Home"
-                    tabBarLabel="Home"
-                    icon={TabBarIcon}
-                  />
-                  <Scene
-                    key="main_links"
-                    component={LinksScreen}
-                    title="Links"
-                    tabBarLabel="Links"
-                    icon={TabBarIcon}
-                  />
-                  <Scene
-                    key="main_settings"
-                    component={SettingsScreen}
-                    title="Settings"
-                    tabBarLabel="Settings"
-                    icon={TabBarIcon}
-                  />
-                </Tabs>
-              </Scene>
-            </Drawer>
-          </Stack>
-        </Lightbox>
-      </Modal>
-    </Overlay>
-  </Router>
+            <Scene  key='welcome' component={WelcomeScreen} />
+
+            <Scene initial drawer key="main" openDrawerOffset={100}
+              contentComponent={Sidebar}
+              drawerIcon={ <Icon name="text" type='material-community' size={25} color="red" />
+            }>
+                
+                <Scene>
+                  <Scene key='profile' component={ProfileScreen} />
+                </Scene>
 
 
-         */
+                <Scene key="tab" tabs hideNavBar icon={TabBarIcon} initial  showLabel={false} 
+                     navigationBarStyle={{backgroundColor: colors.primaryDark, color: 'white'}}
+                    type={ActionConst.REPLACE} tabBarStyle={styles.container}>
 
+                    <Scene key="home"  component={Home} title="HOME" />
 
-      
+                    <Scene key="technology"  component={Technology} title="TECNOLOGIA"  />
+                    
+                    <Scene key="science"  component={Science} title="CIÊNCIA"  />
+                    
+                    <Scene key="entertainment"  component={Entertainment} title="ENTRETIMENTO "  />
+                    
+                    <Scene key="sport" component={Sport} title="DESPORTO"  />
+                </Scene>
+
+                <Scene key='search' component={SearchScreen} back title='PESQUISAR' />
+                
+            </Scene>
+          </Scene>
+        </Router>
     );
   }
-
-  
 }
+
+
+const styles = StyleSheet.create({
+  container: {
+      borderTopColor: colors.grayMedium,
+      backgroundColor: colors.white,
+      justifyContent:'space-between',
+      height: 60,
+  },
+})

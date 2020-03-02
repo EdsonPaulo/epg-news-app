@@ -1,6 +1,7 @@
 import Home from './Home'
-import Profile from './Profile'
-import Welcome from './Welcome'
+import ProfileScreen from './ProfileScreen'
+import WelcomeScreen from './WelcomeScreen'
+import SearchScreen from './Home/SearchScreen'
 
 
-export { Home, Profile, Welcome};
+export { Home, ProfileScreen, WelcomeScreen, SearchScreen};
