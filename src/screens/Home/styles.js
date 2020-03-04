@@ -14,6 +14,8 @@ const styles = StyleSheet.create({
         backgroundColor: colors.primaryDark,
 
     },
+
+    
 })
 
 export default styles;

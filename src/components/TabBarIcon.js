@@ -29,7 +29,6 @@ const styles = StyleSheet.create({
     tab: {
         alignItems: 'center',
         justifyContent: 'center',
-        paddingTop: 5,
         height: '100%'
     },
     activeTabText: { 

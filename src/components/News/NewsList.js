@@ -6,6 +6,7 @@ import {
     ActivityIndicator,
 } from 'react-native';
 
+import { ListItem} from 'react-native-elements'
 import { HorizontalListItem, VerticalListItem } from './NewsItem';
 import {colors} from '../../constants';
 import styles from './styles'   
@@ -87,7 +88,7 @@ export function renderVerticalList (articles, category)
     )
 }
 
-const NewsList = ({ articles, isLoading, error, category }) => 
+const NewsList = ({ articles, isLoading, error }) => 
 {
     return (
         <View style={styles.container}> 
@@ -97,8 +98,24 @@ const NewsList = ({ articles, isLoading, error, category }) =>
             
             { renderFetchStatus(articles, isLoading, error) } 
 
+           
+            {
+                articles.map((article, i) => (
+                <ListItem
+                    
+                    key={i}
+                    leftAvatar={{ source: { uri: article.urlToImage } }}
+                    title={article.title}
+                    subtitle={article.date}
+                    bottomDivider
+                    
+                />
+                ))
+            }
 
-            { renderVerticalList(articles, category) } 
+
+            {// renderVerticalList(articles, category)
+             } 
 
         </View>
     )

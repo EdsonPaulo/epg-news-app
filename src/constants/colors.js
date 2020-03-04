@@ -3,13 +3,17 @@ const colors = {
 
     bgColor: '#F1F3FD',
     bgColor: '#f1f2f6',
-
+    bgColor: '#fff',
 
     primaryDark: '#1e3c72',
     primary: '#57606f',
     primaryLight: '#747d8c', 
 
+    primaryDark: '#34495e',
+
+
     accent: '#2a5298',
+    accent: '#0a3d62',
    
     /** 
     #1e3c72   #2a5298 //azul deep

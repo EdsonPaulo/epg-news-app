@@ -3,11 +3,13 @@ import React, { Component } from 'react'
 import {
     View, 
     Text, 
-    Image, 
     TouchableOpacity,
     TouchableNativeFeedback,
-     ImageBackground 
+    ImageBackground,
+    ActivityIndicator
 } from 'react-native';
+
+import { Image } from 'react-native-elements';
 
 
 import { Ionicons } from '@expo/vector-icons';
@@ -21,11 +23,11 @@ const HorizontalListItem = ({ item }) => {
     //item = item.item;
     return (  
         <TouchableNativeFeedback background={TouchableNativeFeedback.Ripple()} onPress={() => {alert(item.content)}}>
-            <ImageBackground loadingIndicatorSource={require('../../assets/icon.png')} borderRadius={20} source={{uri: item.urlToImage}} style={styles.horizontalItemContainer}>
+            <Image borderRadius={15} PlaceholderContent={<ActivityIndicator size='large' />} source={{uri: item.urlToImage}} style={styles.horizontalItemContainer}>
                 <View style={styles.horizontalItemTitleContainer}>
                     <Text style={styles.horizontalItemTitle}> { item.title } </Text>
                 </View>
-            </ImageBackground>
+            </Image>
         </TouchableNativeFeedback>
     )
 }
