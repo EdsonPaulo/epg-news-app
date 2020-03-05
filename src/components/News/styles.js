@@ -13,23 +13,27 @@ const styles = StyleSheet.create({
     horizontalItemContainer: {
         backgroundColor: 'white',
         width: metrics.screenWidth - 50,
-        height: '95%',
+        height: '90%',
         elevation: 5,
         borderRadius: 15,
         margin: metrics.baseMargin
     },
+    horizontalItemImageContainer: {
+        height: '65%', 
+        width: '100%', 
+        borderTopLeftRadius: 15,
+        borderTopRightRadius: 15,
+    },
     horizontalItemTitleContainer: {
-        height: '20%',
+        height: '30%',   
         padding: metrics.baseMargin,
         width: '100%',
         justifyContent: 'center',
-        backgroundColor: 'white',
-        borderTopLeftRadius: 10,
-        borderTopRightRadius: 10,
-
+        borderBottomLeftRadius: 15,
+        borderBottomRightRadius: 15,
     },
     horizontalItemTitle: {
-        fontSize: 15,
+        fontSize: 14,
         textAlign: 'center',
         fontWeight: 'bold',
         color: 'black'

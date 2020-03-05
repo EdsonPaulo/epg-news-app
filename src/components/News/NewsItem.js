@@ -27,14 +27,22 @@ const HorizontalListItem = ({ item }) => {
     return (  
         <TouchableNativeFeedback background={TouchableNativeFeedback.Ripple()} onPress={() => {alert(item.content)}}>
             <View borderRadius={10} style={styles.horizontalItemContainer}>
+               
+               <View style={styles.horizontalItemImageContainer}>
+                    
+                    <Image  
+                        resizeMode='stretch'
+                        source={{uri: item.urlToImage}}  
+                        style={{ width: '100%', height: '100%'}}
+                        PlaceholderContent={<ActivityIndicator size='large' />}
+                    />
+                        
+               </View>
+
+
                 <View style={styles.horizontalItemTitleContainer}>
                     <Text style={styles.horizontalItemTitle}> { item.title } </Text>
                 </View>
-                <Image  
-                    source={{uri: item.urlToImage}}  
-                    style={{ width: '100%', height: '75%' }}
-                    PlaceholderContent={<ActivityIndicator />}
-                />
             </View>
         </TouchableNativeFeedback>
     )
