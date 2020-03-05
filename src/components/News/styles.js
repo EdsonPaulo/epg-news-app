@@ -13,28 +13,26 @@ const styles = StyleSheet.create({
     horizontalItemContainer: {
         backgroundColor: 'white',
         width: metrics.screenWidth - 50,
-        height: '100%',
-        elevation: 4,
+        height: '95%',
+        elevation: 5,
         borderRadius: 15,
-        margin: metrics.smallMargin
+        margin: metrics.baseMargin
     },
     horizontalItemTitleContainer: {
-        position: 'absolute',
-        paddingHorizontal: metrics.baseMargin,
-        bottom: 0,
-        padding: metrics.smallMargin,
+        height: '20%',
+        padding: metrics.baseMargin,
         width: '100%',
         justifyContent: 'center',
-        backgroundColor: 'rgba(4, 4, 4, 0.6)',
-        borderBottomLeftRadius: 15,
-        borderBottomRightRadius: 15,
+        backgroundColor: 'white',
+        borderTopLeftRadius: 10,
+        borderTopRightRadius: 10,
 
     },
     horizontalItemTitle: {
-        fontSize: 16,
+        fontSize: 15,
         textAlign: 'center',
         fontWeight: 'bold',
-        color: 'whitesmoke'
+        color: 'black'
     },
 
     verticalItemContainer: {
@@ -79,7 +77,7 @@ const styles = StyleSheet.create({
     },
     infoIcon: {
         color: colors.accent,
-        fontSize: 30,
+        fontSize: 24,
     },
     date: {
         color: colors.grayDark,

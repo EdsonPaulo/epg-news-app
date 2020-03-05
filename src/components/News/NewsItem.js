@@ -9,25 +9,33 @@ import {
     ActivityIndicator
 } from 'react-native';
 
-import { Image } from 'react-native-elements';
+import { Image, Card, Button, Icon } from 'react-native-elements';
 
 
 import { Ionicons } from '@expo/vector-icons';
 import {colors} from '../../constants';
 
 import styles from './styles'    
+import TouchableScale from 'react-native-touchable-scale';
 
 
 const HorizontalListItem = ({ item }) => {
     ///console.log(item.item.toString());
     //item = item.item;
+    let isFavorite = false;
+
     return (  
         <TouchableNativeFeedback background={TouchableNativeFeedback.Ripple()} onPress={() => {alert(item.content)}}>
-            <Image borderRadius={15} PlaceholderContent={<ActivityIndicator size='large' />} source={{uri: item.urlToImage}} style={styles.horizontalItemContainer}>
+            <View borderRadius={10} style={styles.horizontalItemContainer}>
                 <View style={styles.horizontalItemTitleContainer}>
                     <Text style={styles.horizontalItemTitle}> { item.title } </Text>
                 </View>
-            </Image>
+                <Image  
+                    source={{uri: item.urlToImage}}  
+                    style={{ width: '100%', height: '75%' }}
+                    PlaceholderContent={<ActivityIndicator />}
+                />
+            </View>
         </TouchableNativeFeedback>
     )
 }

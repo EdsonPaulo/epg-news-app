@@ -13,12 +13,13 @@ const TabBarIcon = ({ focused, title }) => {
         title === 'TECNOLOGIA' ? 'network-outline' : 
         title === 'CIÊNCIA' ? 'flask-outline' :
         title === 'DESPORTO' ? 'soccer' :
-        title === 'ENTRETIMENTO ' ? 'play-box-outline' : '';
+        title === 'ENTRETIMENTO' ? 'play-box-outline' : '';
 
     const activeTabStyle = focused ? styles.activeTabText : styles.inactiveTabText;
 
     return (
         <View style={styles.tab}>
+            {  focused ? <View style={{width: 5, height: 5, borderRadius: 10, backgroundColor: colors.primaryDark}} /> : null  }
             <MaterialCommunityIcons size={25} name={iconName} style={activeTabStyle} />
             <Text style={[activeTabStyle, {fontSize: 10} ]}> {title} </Text>
         </View>
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
     tab: {
         alignItems: 'center',
         justifyContent: 'center',
-        height: '100%'
+        height: '100%',
     },
     activeTabText: { 
         color: colors.primaryDark,

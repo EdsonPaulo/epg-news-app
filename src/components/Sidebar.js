@@ -16,21 +16,21 @@ const Sidebar = () => {
             <View style={styles.menuContainer}>
         
                 <TouchableScale style={styles.menuItem}>
-                    <Icon name='person' />
+                    <Icon name='person' color={colors.primaryDark} />
                     <Text style={styles.menuItemText}> Perfil </Text> 
                 </TouchableScale>
 
                 <View style={styles.divider}/>
 
                 <TouchableScale style={styles.menuItem}> 
-                    <Icon name='star' />
+                    <Icon name='star' color={colors.primaryDark} />
                     <Text style={styles.menuItemText}> Favoritos </Text> 
                 </TouchableScale>
 
                 <View style={styles.divider}/>
 
                 <TouchableScale style={styles.menuItem}>
-                    <Icon name='settings' />
+                    <Icon name='settings'  color={colors.primaryDark} />
                     <Text style={styles.menuItemText}> Definições </Text> 
                 </TouchableScale>
             </View>
@@ -56,7 +56,8 @@ const styles = StyleSheet.create({
     },
     menuItemText: {
         marginHorizontal: 10,
-        fontSize: 15
+        fontSize: 15,
+        color: colors.accent
     },
 
     divider: {

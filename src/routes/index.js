@@ -77,11 +77,13 @@ import {TopNews, Science, Technology, Sport, Entertainment} from '../screens/Hom
                           backgroundColor={colors.white}
                           leftComponent={
                             <TouchableScale onPress={() => Actions.drawerOpen()} style={styles.headerButton} activeScale={1.3}>
+                              <View>
                                 <View style={styles.menuIcon} />
                                 <View style={[styles.menuIcon, {width: 15}]}/>
+                              </View>
                             </TouchableScale>
                           }
-                          centerComponent={{ text: 'EPG NEWS',  style: { color: 'black', fontSize: 16, fontWeight: 'bold' } }}
+                          centerComponent={{ text: 'EPG Notícias',  style: { color: 'black', fontSize: 16, fontWeight: 'bold' } }}
                           rightComponent={
                             <TouchableScale onPress={() => Actions.search()} style={styles.headerButton} activeScale={1.3}>
                                 <Icon name='search' color='black' />
@@ -127,15 +129,15 @@ const styles = StyleSheet.create({
   },
   headerButton: {
     height: '100%', 
-    backgroundColor: 'transparent', 
-    justifyContent:  'center'
+    width: 30,
+    alignItems: 'center',
+    justifyContent:  'center',
   },
   menuIcon: {
     marginVertical: 2, 
     width: 20, 
-    height: 3, 
+    height: 3.5, 
     backgroundColor: 'black', 
     borderRadius: 4
-
   },
 })

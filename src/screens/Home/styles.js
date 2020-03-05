@@ -14,6 +14,14 @@ const styles = StyleSheet.create({
         backgroundColor: colors.primaryDark,
 
     },
+    
+    headerButton: {
+        width: 30,
+        height: '100%', 
+        justifyContent:  'center',
+        alignItems: 'center',
+        marginHorizontal: 10,
+    },
 
     
 })

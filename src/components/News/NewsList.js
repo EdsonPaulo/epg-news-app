@@ -10,6 +10,7 @@ import { ListItem} from 'react-native-elements'
 import { HorizontalListItem, VerticalListItem } from './NewsItem';
 import {colors} from '../../constants';
 import styles from './styles'   
+import { ScrollView } from 'react-native-gesture-handler';
 
 const renderFetchStatus = (articles, isLoading, error) => {
 
@@ -92,6 +93,8 @@ const NewsList = ({ articles, isLoading, error }) =>
 {
     return (
         <View style={styles.container}> 
+           <ScrollView showsVerticalScrollIndicator={false}>
+
 
 
             { renderHorizontalList(articles) }
@@ -99,19 +102,24 @@ const NewsList = ({ articles, isLoading, error }) =>
             { renderFetchStatus(articles, isLoading, error) } 
 
            
+               
             {
                 articles.map((article, i) => (
                 <ListItem
                     
                     key={i}
+                    
                     leftAvatar={{ source: { uri: article.urlToImage } }}
                     title={article.title}
                     subtitle={article.date}
                     bottomDivider
+                    chevron
+                    
                     
                 />
                 ))
             }
+            </ScrollView>
 
 
             {// renderVerticalList(articles, category)
