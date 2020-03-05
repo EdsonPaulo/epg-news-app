@@ -1,16 +1,20 @@
 import React from 'react';
 
-import { View } from 'react-native';
+import { View , Text} from 'react-native';
 
  import styles from './styles';
 import { Image } from 'react-native-elements';
 
-const ArticleScreen = ({ Article }) => {
+const ArticleScreen = ({ article }) => {
     <View style={styles.container}> 
         <View style={styles.imgContainer}> 
+
+            <Image source={{uri: article.urlToImage}} />
             
         </View>
-        <View></View>
+        <View>
+            <Text> {article.title}</Text>
+        </View>
         <View></View>
 
     </View>  

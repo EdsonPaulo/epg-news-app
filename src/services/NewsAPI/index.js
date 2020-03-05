@@ -3,45 +3,117 @@ import axios from 'axios';
 
 import {NewsList} from '../../components'
 
+const API_KEY = '923fe32cc9b14b15989b4fb574bc57a9';
+
+const NewsApiContext = React.createContext();
 
 class index extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
-            articles: [],
+            generalArticles: [],
+            techArticles: [],
+            scienceArticles: [],
+            sportsArticles: [],
+            entertainmentArticles: [],
+
             isLoading: false,
             error: null,
         };
     }
-    async componentDidMount() {
-        const API_KEY = '923fe32cc9b14b15989b4fb574bc57a9';
-        const tempCategory = this.props.category === 'Top' ? 'general' :
-                this.props.category === 'Tecnologia' ? 'technology' : 
-                this.props.category === 'Ciência' ? 'science' :
-                this.props.category === 'Desporto' ? 'sports' :
-                this.props.category === 'ENTRETIMENTO ' ? 'entertertainment' : 'general';
-        //this.setState({ category:  this.props.category});
+
+    componentDidMount() {
+        this.setState({ 
+            generalArticles: this.fetchGeneralArticles(),
+            techArticles: this.fetchTechArticles(),
+            scienceArticles: this.fetchScienceArticles(),
+            sportsArticles: this.fetchSportsArticles(),
+            entertainmentArticles: this.fetchEntertainmentArticles(),
+        });
+    }
 
 
-        const API = `http://newsapi.org/v2/top-headlines?country=br&category=${tempCategory}&pageSize=100&apiKey=${API_KEY}`;
-        const API2 = `http://newsapi.org/v2/top-headlines?country=pt&category=${tempCategory}&pageSize=100&apiKey=${API_KEY}`;
-
+    async fetchArticles(category, country) {
+        const API = `http://newsapi.org/v2/top-headlines?category=${category}&country=${country}&pageSize=10&apiKey=${API_KEY}`;
+        let articles = [];
         this.setState({ isLoading: true });
         try {
             const result = await axios.get(API)
-            const result2 = await axios.get(API2)
-            const totalArticles = result.data.articles.concat(result2.data.articles)
-            this.setState({ articles: totalArticles, isLoading: false });
+            articles = result.data.articles;
+            this.setState({isLoading: false });
+            return articles;
         }
         catch (error) { 
             this.setState({ error, isLoading: false })
-            //alert(error);
+            return null;
+        }
+    }
+
+    fetchGeneralArticles () {
+        const category = 'general';
+        const country = 'br';
+        let articlesData = this.fetchArticles(category, country)
+        return articlesData;
+    }
+    fetchTechArticles () {
+        const category = 'technology';
+        const country = 'pt';
+        let articlesData = this.fetchArticles(category, country)
+        return articlesData;
+    }
+    fetchScienceArticles () {
+        const category = 'science';
+        const country = 'pt';
+        let articlesData = this.fetchArticles(category, country)
+        return articlesData;
+    }
+    fetchSportsArticles () {
+        const category = 'sports';
+        const country = 'pt';
+        let articlesData = this.fetchArticles(category, country)
+        return articlesData;
+    }
+    fetchEntertainmentArticles () {
+        const category = 'entertertainment';
+        const country = 'br';
+        let articlesData = this.fetchArticles(category, country)
+        return articlesData;
+    }
+
+    async fetchSearchArcticles (query) {
+        let articlesData = [];
+        const API = `http://newsapi.org/v2/everything?q=${query}&language=pt&pageSize=10&apiKey=${API_KEY}`;
+        this.setState({ isLoading: true });
+        try {
+            const result = await axios.get(API)
+            articlesData = result.data.articles;
+            return articlesData;
+            this.setState({ error, isLoading: false })
+        }
+        catch (error) { 
+            this.setState({ error, isLoading: false })
+            return null
         }
     }
 
     render () {
         return (
-            <NewsList  { ...this.props } { ...this.state } />
+            <NewsApiContext.Provider
+                value={ 
+                    this.state.generalArticles,
+                    this.state.techArticles,
+                    this.state.scienceArticles,
+                    this.state.sportsArticles,
+                    this.state.entertainmentArticles
+            }>
+
+                {this.props.children}
+
+                { /* <NewsList  { ...this.props } { ...this.state } />  */ }
+
+            </NewsApiContext.Provider>
+           
         )
     }
 }

@@ -9,11 +9,35 @@ import {general, colors} from '../../constants';
 
 import styles from './styles'
 
+import NewsAPI from '../../services/NewsAPI'
+
+
 export default class index extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            generalArticles: [],
+            techArticles: [],
+            scienceArticles: [],
+            sportsArticles: [],
+            entertainmentArticles: [],
+
+            isLoading: false,
+            error: null,
+        };
+    }
     
     render() {
         return (
             <View style={styles.container}>
+
+            {
+
+            
+            }
+            
+                
               
              {/**
                 <Header 
