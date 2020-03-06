@@ -1,3 +1,8 @@
+
+{
+    /**
+     * 
+  
 import React, {useState} from 'react';
 import {
     View, 
@@ -8,34 +13,10 @@ import {
 } from 'react-native';
 
 import { ListItem} from 'react-native-elements'
-import { HorizontalListItem, VerticalListItem } from './NewsItem';
+
 import {colors} from '../../constants';
 import styles from './styles'   
 
-const renderFetchStatus = (articles, isLoading, error) => {
-
-    if (!articles) 
-        return ( 
-            <View>
-                <Text>Nenhum dado encontrado</Text>
-            </View>
-        );
-
-    if (error) 
-        return ( 
-            <View>
-                <Text>Ocorreu um erro: {error.message}</Text>
-            </View>
-        );
-
-    if (isLoading)
-        return (
-            <View style={{alignSelf: 'center', justifyContent: 'center'}}>
-                <ActivityIndicator size="large" color={colors.accent} />
-            </View>
-        );
-
-}
 
 //metodo para obter os 10 primeiros artigos da lista
 function topArticles (articles) {
@@ -106,3 +87,7 @@ const NewsList = ({ articles, isLoading, error }) => {
 }
 
 export default NewsList;
+
+   * 
+     */
+}

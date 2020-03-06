@@ -27,16 +27,13 @@ const HorizontalListItem = ({ item, index }) => {
             <View borderRadius={10} style={styles.horizontalItemContainer}>
                
                <View style={styles.horizontalItemImageContainer}>
-                    
                     <Image  
                         resizeMode='stretch'
                         source={{uri: item.urlToImage}}  
                         style={{ width: '100%', height: '100%'}}
                         PlaceholderContent={<ActivityIndicator size='large' />}
                     />
-                        
                </View>
-
 
                 <View style={styles.horizontalItemTitleContainer}>
                     <Text style={styles.horizontalItemTitle}> { item.title } </Text>
@@ -47,19 +44,13 @@ const HorizontalListItem = ({ item, index }) => {
 }
 
 
-const NewsHorizontalList = ({ articles }) => {
-    return (
-        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-            {
-                articles.map ( item, index =>  {
-                    return HorizontalListItem(item, index);
-                })
-            }
-        </ScrollView>
-    );
-}
-
-
+const NewsHorizontalList = ({ articles }) => (
+    <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+        {
+            articles.map ( item, index => ( HorizontalListItem(item, index) ))
+        }
+    </ScrollView>
+);
 
 
 const styles = StyleSheet.create({

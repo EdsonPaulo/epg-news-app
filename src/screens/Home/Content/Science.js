@@ -3,16 +3,22 @@ import { Text, View } from 'react-native'
 
 import styles from './styles'
 
-import API from '../../../services/NewsAPI' 
+import NewsContextAPI from '../../../contexts/NewsContext' 
 
 
 export default class Science extends Component {
     render() {
         return (
-            <View style={styles.container}>
-                <API style={styles.listContainer} category='Ciência' />
+            <Fragment>
 
-            </View>
+
+                <View style={styles.container}>
+                
+                
+                </View>
+
+
+            </Fragment>
         )
     }
 }

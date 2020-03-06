@@ -15,6 +15,7 @@ import { fonts, colors, metrics } from '../constants';
 
 import {Home, WelcomeScreen, SearchScreen, ProfileScreen, ArticleScreen} from '../screens';
 import {TopNews, Science, Technology, Sport, Entertainment} from '../screens/Home/Content';
+import NewsContextProvider from '../services/NewsAPI';
 
   var backButtonPressedToExit = false;
 
@@ -60,6 +61,8 @@ import {TopNews, Science, Technology, Sport, Entertainment} from '../screens/Hom
   render() {
 
     return (
+
+      <NewsContextProvider>
 
         <Router backAndroidHandler={this.onBackPress}>
           
@@ -114,6 +117,8 @@ import {TopNews, Science, Technology, Sport, Entertainment} from '../screens/Hom
             </Scene>
           </Scene>
         </Router>
+
+      </NewsContextProvider>
     );
   }
 }

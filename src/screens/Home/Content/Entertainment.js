@@ -3,15 +3,30 @@ import { Text, View } from 'react-native'
 
 import styles from './styles'
 
-import API from '../../../services/NewsAPI' 
+import NewsContextAPI from '../../../contexts/NewsContext' 
+
 
 export default class Entertainment extends Component {
     render() {
-        return (
-            <View style={styles.container}>
-                <API category='ENTRETIMENTO ' />
+        let articles= [];
 
-            </View>
+        return (
+            <Fragment>
+
+
+                <View style={styles.container}>
+                    
+                    <NewsContextAPI.Consumer>
+                        { context => articles = context.techArticles }
+                    </NewsContextAPI.Consumer>
+                    
+
+
+                
+                </View>
+
+
+            </Fragment>
         )
     }
 }

@@ -5,7 +5,7 @@ import {NewsList} from '../../components'
 
 const API_KEY = '923fe32cc9b14b15989b4fb574bc57a9';
 
-const NewsApiContext = React.createContext();
+export const NewsContext = React.createContext();
 
 class index extends Component {
 
@@ -88,8 +88,8 @@ class index extends Component {
         try {
             const result = await axios.get(API)
             articlesData = result.data.articles;
-            return articlesData;
             this.setState({ error, isLoading: false })
+            return articlesData;
         }
         catch (error) { 
             this.setState({ error, isLoading: false })
@@ -99,20 +99,13 @@ class index extends Component {
 
     render () {
         return (
-            <NewsApiContext.Provider
-                value={ 
-                    this.state.generalArticles,
-                    this.state.techArticles,
-                    this.state.scienceArticles,
-                    this.state.sportsArticles,
-                    this.state.entertainmentArticles
-            }>
+            <NewsContext.Provider value={{...this.state}}>
 
                 {this.props.children}
 
                 { /* <NewsList  { ...this.props } { ...this.state } />  */ }
 
-            </NewsApiContext.Provider>
+            </NewsContext.Provider>
            
         )
     }

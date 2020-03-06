@@ -4,7 +4,6 @@ import {
     View, 
     Text, 
     StyleSheet,
-    ScrollView,
     ActivityIndicator
 } from 'react-native';
 
@@ -54,20 +53,16 @@ const VerticalListItem = ({ item, index }) => {
 }
 
 
-const NewsVerticalList = ({ articles }) => {
-    return (
-        <ScrollView showsVerticalScrollIndicator={false}>
-            {
-                articles.map ( item, index =>  {
-                    return VerticalListItem(item, index);
-                })
-            }
-        </ScrollView>
-    );
-}
+const NewsVerticalList = ({ articles }) => (
+    <View>
+        { 
+            articles.map( item, index => ( VerticalListItem(item, index) ))
+        }
+    </View>
+);
+
 
 const styles = StyleSheet.create({
-
     itemContainer: {
         width: '100%',
         height: 100,

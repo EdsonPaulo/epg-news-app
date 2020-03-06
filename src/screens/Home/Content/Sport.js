@@ -3,16 +3,22 @@ import { Text, View } from 'react-native'
 
 import styles from './styles'
 
-
-import API from '../../../services/NewsAPI' 
+import NewsContextAPI from '../../../contexts/NewsContext' 
 
 
 export default class Sport extends Component {
     render() {
         return (
-            <View style={styles.container}>
-                <API category='Desporto' />
-            </View>
+            <Fragment>
+
+
+                <View style={styles.container}>
+                
+                
+                </View>
+
+
+            </Fragment>
         )
     }
 }
