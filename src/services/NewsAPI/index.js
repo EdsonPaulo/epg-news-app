@@ -18,69 +18,67 @@ class index extends Component {
             sportsArticles: [],
             entertainmentArticles: [],
 
+            searchArticles: [],
+
             isLoading: false,
             error: null,
         };
     }
 
-    componentDidMount() {
-        this.setState({ 
-            generalArticles: this.fetchGeneralArticles(),
-            techArticles: this.fetchTechArticles(),
-            scienceArticles: this.fetchScienceArticles(),
-            sportsArticles: this.fetchSportsArticles(),
-            entertainmentArticles: this.fetchEntertainmentArticles(),
+    async componentDidMount() {
+
+        /** 
+        if(!this.state.isLoading)
+            this.setState({ 
+            generalArticles: await this.fetchGeneralArticles(),
+            techArticles: await this.fetchTechArticles(),
+            scienceArticles: await this.fetchScienceArticles(),
+            sportsArticles: await this.fetchSportsArticles(),
+            entertainmentArticles: await this.fetchEntertainmentArticles(),
         });
+
+       // console.log(this.state.techArticles)
+
+       */
+
+      this.fetchAllCategory();
+        
+       
     }
 
 
-    async fetchArticles(category, country) {
-        const API = `http://newsapi.org/v2/top-headlines?category=${category}&country=${country}&pageSize=10&apiKey=${API_KEY}`;
-        let articles = [];
+    //rEUI
+    
+    async fetchAllCategory () {
+        console.log('REQUESTING API');
         this.setState({ isLoading: true });
+
+        const urlsAPI = [
+            axios.get(`http://newsapi.org/v2/top-headlines?category=general&country=br&pageSize=10&apiKey=${API_KEY}`), //general
+            axios.get(`http://newsapi.org/v2/top-headlines?category=technology&country=pt&pageSize=10&apiKey=${API_KEY}`), //technology
+            axios.get(`http://newsapi.org/v2/top-headlines?category=science&country=pt&pageSize=10&apiKey=${API_KEY}`),    //science
+            axios.get(`http://newsapi.org/v2/top-headlines?category=sports&country=pt&pageSize=10&apiKey=${API_KEY}`),    //sports
+            axios.get(`http://newsapi.org/v2/top-headlines?category=entertertainment&country=pt&pageSize=10&apiKey=${API_KEY}`) //entertertainment
+        ];
         try {
-            const result = await axios.get(API)
-            articles = result.data.articles;
-            this.setState({isLoading: false });
-            return articles;
+            const responses = await axios.all(urlsAPI);
+            this.setState({
+                generalArticles: responses[0].data.articles,
+                techArticles: responses[1].data.articles,
+                scienceArticles: responses[2].data.articles,
+                sportsArticles: responses[3].data.articles,
+                entertainmentArticles: responses[4].data.articles
+            });
         }
-        catch (error) { 
-            this.setState({ error, isLoading: false })
-            return null;
+        catch (errors) { 
+            console.log(errors);
+            this.setState({ error })
+        }
+        finally {
+            this.setState({ isLoading: false })
         }
     }
-
-    fetchGeneralArticles () {
-        const category = 'general';
-        const country = 'br';
-        let articlesData = this.fetchArticles(category, country)
-        return articlesData;
-    }
-    fetchTechArticles () {
-        const category = 'technology';
-        const country = 'pt';
-        let articlesData = this.fetchArticles(category, country)
-        return articlesData;
-    }
-    fetchScienceArticles () {
-        const category = 'science';
-        const country = 'pt';
-        let articlesData = this.fetchArticles(category, country)
-        return articlesData;
-    }
-    fetchSportsArticles () {
-        const category = 'sports';
-        const country = 'pt';
-        let articlesData = this.fetchArticles(category, country)
-        return articlesData;
-    }
-    fetchEntertainmentArticles () {
-        const category = 'entertertainment';
-        const country = 'br';
-        let articlesData = this.fetchArticles(category, country)
-        return articlesData;
-    }
-
+ 
     async fetchSearchArcticles (query) {
         let articlesData = [];
         const API = `http://newsapi.org/v2/everything?q=${query}&language=pt&pageSize=10&apiKey=${API_KEY}`;
@@ -88,25 +86,23 @@ class index extends Component {
         try {
             const result = await axios.get(API)
             articlesData = result.data.articles;
-            this.setState({ error, isLoading: false })
-            return articlesData;
+            this.setState({ searchArticles: articlesData })
+            //return articlesData;
         }
         catch (error) { 
-            this.setState({ error, isLoading: false })
-            return null
+            this.setState({ error })
+            //return null
+        }
+        finally {
+            this.setState({ isLoading: false })
         }
     }
 
     render () {
         return (
             <NewsContext.Provider value={{...this.state}}>
-
                 {this.props.children}
-
-                { /* <NewsList  { ...this.props } { ...this.state } />  */ }
-
             </NewsContext.Provider>
-           
         )
     }
 }

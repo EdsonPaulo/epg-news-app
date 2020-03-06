@@ -9,7 +9,7 @@ import NewsContextAPI from '../../../contexts/NewsContext'
 export default class Science extends Component {
     render() {
         return (
-            <Fragment>
+          
 
 
                 <View style={styles.container}>
@@ -18,7 +18,6 @@ export default class Science extends Component {
                 </View>
 
 
-            </Fragment>
         )
     }
 }

@@ -11,22 +11,17 @@ export default class Entertainment extends Component {
         let articles= [];
 
         return (
-            <Fragment>
 
 
                 <View style={styles.container}>
                     
-                    <NewsContextAPI.Consumer>
-                        { context => articles = context.techArticles }
-                    </NewsContextAPI.Consumer>
-                    
+                  
 
 
                 
                 </View>
 
 
-            </Fragment>
         )
     }
 }

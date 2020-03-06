@@ -4,7 +4,8 @@ import {
     View, 
     Text, 
     StyleSheet,
-    ActivityIndicator
+    ActivityIndicator,
+    ScrollView
 } from 'react-native';
 
 import { Image, Card, Button, Icon } from 'react-native-elements';
@@ -53,13 +54,29 @@ const VerticalListItem = ({ item, index }) => {
 }
 
 
-const NewsVerticalList = ({ articles }) => (
-    <View>
-        { 
-            articles.map( item, index => ( VerticalListItem(item, index) ))
-        }
-    </View>
-);
+function NewsVerticalList (props) {
+    let articlesArray = [];
+    articlesArray = props.articles
+
+  //  console.log(articlesArray)
+
+    return (
+        
+        <View>
+            { 
+            
+                articlesArray.map((article , index) => {
+
+                   return VerticalListItem( article, index );
+
+                })
+ 
+            }
+
+        </View>
+    )
+}
+
 
 
 const styles = StyleSheet.create({

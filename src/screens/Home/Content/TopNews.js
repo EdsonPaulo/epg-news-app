@@ -11,19 +11,15 @@ export default class TopNews extends Component {
         let articles= [];
         
         return (
-            <Fragment>
+           
 
 
                 <View style={styles.container}>
-                    <NewsContextAPI.Consumer>
-                        {context => articles = context.generalArticles }
-                    </NewsContextAPI.Consumer>
                 
                 
                 </View>
 
 
-            </Fragment>
         )
     }
 }
