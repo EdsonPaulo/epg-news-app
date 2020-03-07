@@ -9,7 +9,9 @@ import {general, colors} from '../../constants';
 
 import styles from './styles'
 
-import NewsAPI from '../../services/NewsAPI'
+import { NewsContext } from '../../services/NewsAPI';
+
+import {VerticalList, FetchStatus} from '../../components/News';
 
 
 export default class index extends Component {
@@ -17,40 +19,48 @@ export default class index extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            generalArticles: [],
-            techArticles: [],
-            scienceArticles: [],
-            sportsArticles: [],
-            entertainmentArticles: [],
-
-            isLoading: false,
-            error: null,
+       
         };
     }
     
     render() {
         return (
-            <View style={styles.container}>
-
-            {
-
-            
-            }
-            
+            <NewsContext.Consumer>
                 
-              
-             {/**
-                <Header 
-                    placement="center"
-                    backgroundColor={colors.primaryDark}
-                    leftComponent={{ icon: 'text', type: 'material-community', color: 'white', underlayColor: 'transparent', onPress: () => { Actions.push('welcome') } }}
-                    centerComponent={{ text: 'EPG NEWS',  style: { color: '#fff', fontSize: 18, fontWeight: 'bold' } }}
-                    rightComponent={{ icon: 'search', color: 'white', underlayColor: 'transparent', onPress: () => {Actions.push('search') } }}
-                />
-            */} 
+                { (context) => {
 
-                <Text>HOME SCREEN</Text>
-        </View>
+                    const { generalArticles, isLoading, error } = context;
+
+                  //  console.log(isLoading);
+
+                    return (
+                        <ScrollView style={styles.container}>
+                            <Text>HOME SCREEN</Text>
+                           
+                            <FetchStatus articles={generalArticles} isLoading={isLoading} error={error}  />
+
+                            {
+                                isLoading ? null :
+                                !generalArticles 
+                                    ? <Text>Sem dados</Text> :
+                                
+                                generalArticles.map((article, index) => {
+                                    return (
+                                        <View style={{width: '100%', elevation: 3, backgroundColor: 'whitesmoke', margin:10}}>
+                                            <Text>{index}. Título: {article.title}</Text>
+                                            <Text>Imagem: {article.urlToImage}</Text>
+                                        </View>
+                                    )
+                                })
+                            }
+                        </ScrollView>
+                    )
+
+                     // <VerticalList articles={this.state.articles} />
+                    }
+                }
+            </NewsContext.Consumer>
+           
         )
     }
 }

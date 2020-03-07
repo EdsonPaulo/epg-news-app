@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import {
     View, 
@@ -17,18 +17,18 @@ import {Actions} from 'react-native-router-flux'
 import {general, colors, fonts, metrics} from '../../constants';
 
 
-const VerticalListItem = ({ item, index }) => {
-    const {isFavorite, setFavorite} =  React.useState(false);
+const VerticalListItem = ( item, index ) => {
+    const {favorite, setFavorite} = useState(true);
 
     return (         
-        <TouchableScale key={index} onPress={() => {Actions.article(item.content)}}>
+        <TouchableScale key={index} onPress={() => {Actions.article(item)}}>
             <View style={styles.itemContainer}>
                
                 <View style={styles.imgContainer}>
                     <Image resizeMode='stretch'
+                        PlaceholderContent={ <ActivityIndicator size='large' color={colors.accent} />} 
                         source={{uri: item.urlToImage}}  
                         style={{ width: '100%', height: '100%'}}
-                        PlaceholderContent={ <ActivityIndicator size='large' color={colors.accent} />} 
                     />
                 </View>
 
@@ -37,13 +37,13 @@ const VerticalListItem = ({ item, index }) => {
 
                     <View style={styles.infoBottomContainer}>
                         <Text style={styles.date}> { item.publishedAt } </Text>
-                        <View>
-                            <TouchableScale activeScale={0.7} onPress={() => { setFavorite( !isFavorite ) }}> 
-                                <Icon name={isFavorite  ? 'ios-star' : 'ios-star-outline'} type='ionicon' style={styles.infoIcon} /> 
+                        <View style={{flexDirection: 'row'}}>
+                            <TouchableScale activeScale={0.7} onPress={ () => {setFavorite(true)} }> 
+                                <Icon name={favorite ? 'ios-star' : 'ios-star-outline'} type='ionicon' style={styles.infoIcon} /> 
                             </TouchableScale>
 
-                            <TouchableScale activeScale={0.7}>  
-                                <Ionicons name='md-share' type='ionicon' style={styles.infoIcon} /> 
+                            <TouchableScale activeScale={0.7} style={{marginHorizontal: 10}}>  
+                                <Icon name='md-share' type='ionicon' style={styles.infoIcon} /> 
                             </TouchableScale>
                         </View>
                     </View>
@@ -87,8 +87,9 @@ const styles = StyleSheet.create({
         elevation: metrics.smallMargin,
         borderRadius: metrics.baseRadius,
         alignItems: 'center',
+        alignSelf: 'center',
         backgroundColor: 'white',
-        marginVertical: metrics.baseMargin
+        margin: metrics.baseMargin
     },
     imgContainer: {
         width: '30%',
@@ -122,7 +123,8 @@ const styles = StyleSheet.create({
     },
     infoIcon: {
         color: colors.accent,
-        fontSize: 24,
+        fontSize: 22,
+        margin: 2
     },
     date: {
         color: colors.grayDark,

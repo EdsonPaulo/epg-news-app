@@ -8,8 +8,7 @@ import {
 
 import {colors} from '../../constants';
 
-const NewsFetchStatus = (articles, isLoading, error) => {
-
+const NewsFetchStatus = ({articles, isLoading, error}) => {
     if (!articles) 
         return (
             <View style={styles.container}>
@@ -20,7 +19,8 @@ const NewsFetchStatus = (articles, isLoading, error) => {
     if (error) 
         return ( 
             <View style={styles.container}>
-                <Text>Ocorreu um erro: {error.message}</Text>
+                <Text>Ocorreu um erro!</Text>
+                <Text>{error.message}</Text>
             </View>
         );
 
@@ -30,12 +30,15 @@ const NewsFetchStatus = (articles, isLoading, error) => {
                 <ActivityIndicator size="large" color={colors.accent} />
             </View>
         );
+        
+    return <View />
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignSelf: 'center', 
+        alignItems: 'center',
         justifyContent: 'center'
     }
 })

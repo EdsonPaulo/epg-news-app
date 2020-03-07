@@ -16,11 +16,10 @@ const styles = StyleSheet.create({
     },
     
     headerButton: {
-        width: 30,
+        width: 35,
         height: '100%', 
         justifyContent:  'center',
         alignItems: 'center',
-        marginHorizontal: 10,
     },
 
     

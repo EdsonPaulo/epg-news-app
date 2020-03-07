@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { Text, View } from 'react-native'
+import { Text, View, ScrollView } from 'react-native'
 
 import { NewsContext } from '../../../services/NewsAPI';
 
@@ -28,14 +28,16 @@ export default class Technology extends Component {
 
 
                     return (
-                        <View style={styles.container}>
+                        <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
                             <Text>TECNOLOGIA</Text>
                             {
-                               
 
                             }
+
+                            <FetchStatus articles={techArticles} isLoading={isLoading} error={error}  />
+
                             <VerticalList articles={techArticles} />
-                        </View>
+                        </ScrollView>
                     )
 
                      // <VerticalList articles={this.state.articles} />

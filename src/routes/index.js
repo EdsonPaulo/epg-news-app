@@ -110,9 +110,12 @@ import NewsContextProvider from '../services/NewsAPI';
 
                 <Scene key='search' hideNavBar component={SearchScreen} title='PESQUISAR' />
 
-                <Scene key='arcticle' component={ArticleScreen} back />
+                <Scene >
+                  <Scene key='article' hideNavBar component={ArticleScreen} />
+                </Scene>
+                  
                 
-                <Scene key='profile' component={ProfileScreen} />
+                <Scene key='profile' hideNavBar component={ProfileScreen} />
                 
             </Scene>
           </Scene>
