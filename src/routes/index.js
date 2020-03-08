@@ -77,6 +77,7 @@ import NewsContextProvider from '../services/NewsAPI';
                     navBar={() => 
                       <Header 
                           placement="center"
+                          containerStyle={{elevation: 4, borderBottomLeftRadius: 8, borderBottomRightRadius: 8}}
                           backgroundColor={colors.white}
                           leftComponent={
                             <TouchableScale onPress={() => Actions.drawerOpen()} style={styles.headerButton} activeScale={1.3}>
@@ -110,7 +111,7 @@ import NewsContextProvider from '../services/NewsAPI';
 
                 <Scene key='search' hideNavBar component={SearchScreen} title='PESQUISAR' />
 
-                <Scene >
+                <Scene>
                   <Scene key='article' hideNavBar component={ArticleScreen} />
                 </Scene>
                   

@@ -67,7 +67,7 @@ const ArticleScreen = ( article ) => {
                       
                     </View>
 
-                    <View style={{ paddingHorizontal: 20, paddingVertical: 50, width: '100%', height: '70%' }}>
+                    <ScrollView style={{ paddingHorizontal: 20, paddingVertical: 50, width: '100%', height: '70%' }}>
 
                         <Text style={{color: colors.primaryDark, fontSize: 16, fontWeight: 'bold', textAlign: 'center', marginBottom: 20}}> {article.title}</Text>
                         
@@ -75,7 +75,7 @@ const ArticleScreen = ( article ) => {
                         
                         <Text style={{fontSize: 13, textAlign: 'right', marginVertical: 30, color: colors.grayDark}}> {article.publishedAt}</Text>
                         
-                    </View>
+                    </ScrollView>
 
                 </View>
 

@@ -1,23 +1,40 @@
 import React, { Component } from 'react'
-import { Text, View } from 'react-native'
+import { Text, View, ScrollView } from 'react-native'
+
+import { NewsContext } from '../../../services/NewsAPI';
+
+import {VerticalList, FetchStatus} from '../../../components/News';
 
 import styles from './styles'
-
-import NewsContextAPI from '../../../contexts/NewsContext' 
-
+import { colors } from '../../../constants';
 
 export default class Science extends Component {
     render() {
         return (
-          
+            <NewsContext.Consumer>
+            { (context) => {
 
+                const { scienceArticles, isLoading, error } = context;
 
-                <View style={styles.container}>
-                
-                
-                </View>
+                return (
+                    <View  style={styles.container} >
+                        
+                        <ScrollView showsVerticalScrollIndicator={false} style={{ }}>
+                        
+                            <Text style={styles.title}>CIêNCIA</Text>
+                        
+                            <FetchStatus articles={scienceArticles} isLoading={isLoading} error={error}  />
 
+                            <VerticalList articles={scienceArticles} />
+                        
+                        </ScrollView>
+                     
+                    </View>
+                )
 
+                }
+            }
+        </NewsContext.Consumer>
         )
     }
 }

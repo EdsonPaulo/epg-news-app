@@ -18,7 +18,6 @@ import {general, colors, fonts, metrics} from '../../constants';
 
 
 const VerticalListItem = ( item, index ) => {
-    const {favorite, setFavorite} = useState(true);
 
     return (         
         <TouchableScale key={index} onPress={() => {Actions.article(item)}}>
@@ -28,25 +27,12 @@ const VerticalListItem = ( item, index ) => {
                     <Image resizeMode='stretch'
                         PlaceholderContent={ <ActivityIndicator size='large' color={colors.accent} />} 
                         source={{uri: item.urlToImage}}  
-                        style={{ width: '100%', height: '100%'}}
+                        style={styles.img}
                     />
                 </View>
 
                 <View style={styles.infoContainer}>
                     <Text style={styles.title}> { item.title } </Text>
-
-                    <View style={styles.infoBottomContainer}>
-                        <Text style={styles.date}> { item.publishedAt } </Text>
-                        <View style={{flexDirection: 'row'}}>
-                            <TouchableScale activeScale={0.7} onPress={ () => {setFavorite(true)} }> 
-                                <Icon name={favorite ? 'ios-star' : 'ios-star-outline'} type='ionicon' style={styles.infoIcon} /> 
-                            </TouchableScale>
-
-                            <TouchableScale activeScale={0.7} style={{marginHorizontal: 10}}>  
-                                <Icon name='md-share' type='ionicon' style={styles.infoIcon} /> 
-                            </TouchableScale>
-                        </View>
-                    </View>
                 </View>
             </View>
         </TouchableScale>
@@ -61,18 +47,14 @@ function NewsVerticalList (props) {
   //  console.log(articlesArray)
 
     return (
-        
-        <View>
-            { 
-            
-                articlesArray.map((article , index) => {
+        <View style={{padding: 5}}>
+        { 
+            articlesArray.map((article , index) => {
 
-                   return VerticalListItem( article, index );
+                return VerticalListItem( article, index );
 
-                })
- 
-            }
-
+            })
+        }
         </View>
     )
 }
@@ -84,39 +66,39 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 100,
         flexDirection: 'row',
-        elevation: metrics.smallMargin,
+        elevation: 4,
         borderRadius: metrics.baseRadius,
         alignItems: 'center',
         alignSelf: 'center',
         backgroundColor: 'white',
-        margin: metrics.baseMargin
+        padding: metrics.baseMargin,
+        marginVertical: metrics.smallMargin,
     },
     imgContainer: {
         width: '30%',
         height: '100%',
-        borderTopLeftRadius: metrics.baseRadius,
-        borderBottomLeftRadius: metrics.baseRadius,
+        borderRadius: metrics.baseRadius,
     },
     img: {
-        resizeMode: 'stretch',
         width: '100%',
-        height: 100,
-        borderTopLeftRadius: metrics.baseRadius,
-        borderBottomLeftRadius: metrics.baseRadius,
+        height: '100%',
+        borderRadius: metrics.baseRadius,
     },
     infoContainer: {
+        alignItems: 'center',
+        justifyContent: 'center',
         padding: metrics.baseMargin,
-        textAlign: 'justify',
         width: '70%',
+        height: '100%'
     },
     title: {
         color: colors.primaryDark,
-        fontSize: 13,
+        fontSize: 14,
         fontWeight: 'bold',
-        textAlign: 'justify',
-        marginBottom:  metrics.smallMargin,
+        textAlign: 'center',
     },
     infoBottomContainer: {
+
         flexDirection: 'row',
         justifyContent: 'space-between',
 

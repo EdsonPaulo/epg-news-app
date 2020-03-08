@@ -19,7 +19,7 @@ const TabBarIcon = ({ focused, title }) => {
 
     return (
         <View style={styles.tab}>
-            {  focused ? <View style={{width: 5, height: 5, borderRadius: 10, backgroundColor: colors.primaryDark}} /> : null  }
+            {  focused ? <View style={{width: 5, height: 5, borderRadius: 10, backgroundColor: colors.accent}} /> : null  }
             <MaterialCommunityIcons size={25} name={iconName} style={activeTabStyle} />
             <Text style={[activeTabStyle, {fontSize: 10} ]}> {title} </Text>
         </View>
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
         height: '100%',
     },
     activeTabText: { 
-        color: colors.primaryDark,
+        color: colors.accent,
         
     },
     inactiveTabText: { 
