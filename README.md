@@ -11,4 +11,22 @@ In that project, I got skills like:
 <li> Data Fetching from an external API (newsapi.org); </li>
 <li> React Hooks; </li>
 <li> Navigation/Routing with RN Router Flux; </li>
+<li> State Management; </li>
+<li> AsyncStorage; </li>
 </ul>
+<br>
+<br>
+<b>NB:</b> To Execute the project require <a href="https://docs.expo.io/versions/latest/">Expo.io</a>
+<br>
+<br>
+<h6>Running: </h6>
+<br>
+<ol>
+  <li> Clone the project to your machine; </li>
+  <li> Open the terminal to the project (cd .../epg-news-app)</li>
+  <li> type: <b>expo install</b> (to install all project dependencies)</li>
+  <li> Next: <b>expo start</b> or 
+    <br> for android: <b>expo start --android</b>,
+    <br> for ios: <b>expo start --ios</b> 
+  </li>
+</ol>
