@@ -16,7 +16,6 @@ In that project, I got skills like:
   <li> Realm Database. </li>
 </ul>
 <br>
-<br>
 <b>NB:</b> To Execute the project require <a href="https://docs.expo.io/versions/latest/">Expo.io</a>
 <br>
 <br>
