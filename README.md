@@ -24,7 +24,7 @@ In that project, I got skills like:
 <ol>
   <li> Clone the project to your machine; </li>
   <li> Open the terminal to the project (cd .../epg-news-app)</li>
-  <li> type: <b>expo install</b> (to install all project dependencies)</li>
+  <li> type: <b>npm install</b> or <b>yarn</b> (to install all project dependencies)</li>
   <li> Next: <b>expo start</b> or 
     <br> for android: <b>expo start --android</b>,
     <br> for ios: <b>expo start --ios</b> 
