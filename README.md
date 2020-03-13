@@ -21,7 +21,6 @@ In that project, I got skills like:
 <br>
 <br>
 <h6>Running: </h6>
-<br>
 <ol>
   <li> Clone the project to your machine; </li>
   <li> Open the terminal to the project (cd .../epg-news-app)</li>
