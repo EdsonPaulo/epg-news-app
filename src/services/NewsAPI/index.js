@@ -26,7 +26,7 @@ export default class index extends Component {
     componentDidMount() {
 
       this.fetchAllCategory();
-       
+
     }
 
 
@@ -35,11 +35,11 @@ export default class index extends Component {
         this.setState({ isLoading: true });
 
         const urlsAPI = [
-            axios.get(`http://newsapi.org/v2/top-headlines?category=general&country=br&pageSize=10&apiKey=${API_KEY}`), //general
-            axios.get(`http://newsapi.org/v2/top-headlines?category=technology&country=pt&pageSize=10&apiKey=${API_KEY}`), //technology
-            axios.get(`http://newsapi.org/v2/top-headlines?category=science&country=pt&pageSize=10&apiKey=${API_KEY}`),    //science
-            axios.get(`http://newsapi.org/v2/top-headlines?category=sports&country=pt&pageSize=10&apiKey=${API_KEY}`),    //sports
-            axios.get(`http://newsapi.org/v2/top-headlines?category=entertertainment&country=pt&pageSize=10&apiKey=${API_KEY}`) //entertertainment
+            axios.get(`http://newsapi.org/v2/top-headlines?category=general&country=br&pageSize=20&apiKey=${API_KEY}`), //general
+            axios.get(`http://newsapi.org/v2/top-headlines?category=technology&country=pt&pageSize=20&apiKey=${API_KEY}`), //technology
+            axios.get(`http://newsapi.org/v2/top-headlines?category=science&country=pt&pageSize=20&apiKey=${API_KEY}`),    //science
+            axios.get(`http://newsapi.org/v2/top-headlines?category=sports&country=pt&pageSize=20&apiKey=${API_KEY}`),    //sports
+            axios.get(`http://newsapi.org/v2/top-headlines?category=entertainment&country=br&pageSize=20&apiKey=${API_KEY}`) //entertertainment
         ];
         try {
             const responses = await axios.all(urlsAPI);
@@ -48,11 +48,11 @@ export default class index extends Component {
                 techArticles: responses[1].data.articles,
                 scienceArticles: responses[2].data.articles,
                 sportsArticles: responses[3].data.articles,
-                entertainmentArticles: responses[4].data.articles
+                entertainmentArticles: responses[4].data.articles,
             });
         }
-        catch (errors) { 
-            console.log(errors);
+        catch (error) { 
+            console.log(error);
             this.setState({ error })
         }
         finally { this.setState({ isLoading: false }) }

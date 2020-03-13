@@ -21,7 +21,7 @@ export default class Science extends Component {
                         
                         <ScrollView showsVerticalScrollIndicator={false} style={{ }}>
                         
-                            <Text style={styles.title}>CIêNCIA</Text>
+                            <Text style={styles.title}>CIÊNCIA</Text>
                         
                             <FetchStatus articles={scienceArticles} isLoading={isLoading} error={error}  />
 

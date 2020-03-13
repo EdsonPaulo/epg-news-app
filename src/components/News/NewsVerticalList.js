@@ -25,6 +25,8 @@ const VerticalListItem = ( item, index ) => {
                
                 <View style={styles.imgContainer}>
                     <Image resizeMode='stretch'
+                        borderTopLeftRadius={10}
+                        borderBottomLeftRadius={10}
                         PlaceholderContent={ <ActivityIndicator size='large' color={colors.accent} />} 
                         source={{uri: item.urlToImage}}  
                         style={styles.img}
@@ -43,9 +45,7 @@ const VerticalListItem = ( item, index ) => {
 function NewsVerticalList (props) {
     let articlesArray = [];
     articlesArray = props.articles
-
   //  console.log(articlesArray)
-
     return (
         <View style={{padding: 5}}>
         { 
@@ -59,25 +59,20 @@ function NewsVerticalList (props) {
     )
 }
 
-
-
 const styles = StyleSheet.create({
     itemContainer: {
         width: '100%',
         height: 100,
         flexDirection: 'row',
         elevation: 4,
-        borderRadius: metrics.baseRadius,
-        alignItems: 'center',
-        alignSelf: 'center',
+        borderRadius: 10,
+        alignItems: 'center', 
         backgroundColor: 'white',
-        padding: metrics.baseMargin,
         marginVertical: metrics.smallMargin,
     },
     imgContainer: {
-        width: '30%',
+        width: '35%',
         height: '100%',
-        borderRadius: metrics.baseRadius,
     },
     img: {
         width: '100%',
@@ -88,11 +83,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         padding: metrics.baseMargin,
-        width: '70%',
+        width: '65%',
         height: '100%'
     },
     title: {
-        color: colors.primaryDark,
+        color: colors.dark,
         fontSize: 14,
         fontWeight: 'bold',
         textAlign: 'center',
@@ -118,8 +113,5 @@ const styles = StyleSheet.create({
         margin: 5,
     }
 })
-
-
-
 
 export default NewsVerticalList;

@@ -26,7 +26,6 @@ export default class Entertainment extends Component {
                             <Text style={styles.title}>ENTRETENIMENTO</Text>
                         
                             <FetchStatus articles={entertainmentArticles} isLoading={isLoading} error={error}  />
-
                             <VerticalList articles={entertainmentArticles} />
                         
                         </ScrollView>

@@ -8,7 +8,6 @@ import {Header, Icon} from 'react-native-elements'
 
 import TouchableScale from 'react-native-touchable-scale'
 
-
 import {Sidebar, TabBarIcon} from '../components';
 
 import { fonts, colors, metrics } from '../constants';
@@ -87,7 +86,7 @@ import NewsContextProvider from '../services/NewsAPI';
                               </View>
                             </TouchableScale>
                           }
-                          centerComponent={{ text: 'EPG Notícias',  style: { color: 'black', fontSize: 16, fontWeight: 'bold' } }}
+                          centerComponent={{ text: 'EPG NOTÍCIAS', style: { color: 'black', fontSize: 16, fontWeight: 'bold' } }}
                           rightComponent={
                             <TouchableScale onPress={() => Actions.search()} style={styles.headerButton} activeScale={1.3}>
                                 <Icon name='search' color='black' />
@@ -111,7 +110,7 @@ import NewsContextProvider from '../services/NewsAPI';
 
                 <Scene key='search' hideNavBar component={SearchScreen} title='PESQUISAR' />
 
-                <Scene>
+                <Scene key='articleRoot'>
                   <Scene key='article' hideNavBar component={ArticleScreen} />
                 </Scene>
                   
@@ -129,7 +128,7 @@ import NewsContextProvider from '../services/NewsAPI';
 
 
 const styles = StyleSheet.create({
-  container: {
+  container: {          
       borderTopColor: colors.grayLight,
       borderTopWidth: 2,
       backgroundColor: colors.white,
