@@ -51,9 +51,7 @@ export default class SearchScreen extends Component {
         finally { this.setState({ isLoading: false })  }
     }
 
-
     render() {
-
         const { searchQuery,searchedArticles, error, isLoading } = this.state;
 
         return (
@@ -90,9 +88,9 @@ export default class SearchScreen extends Component {
                     {
                         searchedArticles.length !== 0 ? null :
                         <View style={{marginTop: 150, alignItems: 'center', justifyContent: 'center', alignSelf: 'center' }}>
-                                <Icon name='warning' size={50} color={colors.accent} />
-                                <Text>Nada a mostrar!</Text>
-                                <Text> Informe um novo termo a pesquisar...</Text>
+                            <Icon name='warning' size={50} color={colors.accent} />
+                            <Text>Nada a mostrar!</Text>
+                            <Text> Informe um novo termo a pesquisar...</Text>
                         </View>
                     }
                         <VerticalList articles={searchedArticles} />
