@@ -9,8 +9,12 @@ import {Actions} from 'react-native-router-flux'
 import globalStyles from './styles';
 import { metrics, colors } from '../../constants';
 
+import DateFormat from '../../util/DateFormat'
+
 
 const ArticleScreen = ( article ) => {
+    
+   // const isoDate = new Date();
 
     return (
         <View style={globalStyles.container}> 
@@ -54,10 +58,11 @@ const ArticleScreen = ( article ) => {
                             
                             <Text style={{fontSize: 16, textAlign: 'justify'}}> {'\n'+article.description + '\n\n' + article.content}</Text>
                             
-                            <Text style={{fontSize: 13, textAlign: 'right', marginVertical: 30, color: colors.grayDark}}> {article.publishedAt}</Text>
-                
+                            <Text style={{fontSize: 13, textAlign: 'right', marginVertical: 30, color: colors.grayDark}}> 
+                                { DateFormat(article.publishedAt) } 
+                            </Text>
+                          
                         </View>
-                    
                     </View>
 
                 </ScrollView>
@@ -100,6 +105,7 @@ const styles = StyleSheet.create({
     },
 
     content: {
+        height: 800,
         borderRadius: 15,
         marginHorizontal: 20,
         elevation: 5, 
