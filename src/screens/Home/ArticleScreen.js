@@ -14,7 +14,6 @@ import DateFormat from '../../util/DateFormat'
 
 const ArticleScreen = ( article ) => {
     
-   // const isoDate = new Date();
 
     return (
         <View style={globalStyles.container}> 
@@ -31,18 +30,18 @@ const ArticleScreen = ( article ) => {
 
                         <View style={styles.imgContainer}>
 
-                            <Image resizeMode='stretch' borderRadius={15} 
+                            <Image resizeMode='stretch' borderRadius={10} 
                                 source={{uri: article.urlToImage}} 
                                 PlaceholderContent={ <ActivityIndicator size='large' color={colors.accent} />} 
                                 style={{width: '100%', height: '100%'}} />
 
                             <View style={styles.articleActionContainer}>
                                 <TouchableScale activeScale={1.3} style={[styles.articleActionButton, { marginRight: 15}]}>
-                                    <Icon name='ios-star' type='ionicon' color='white' />
+                                    <Icon name='ios-star-outline' type='ionicon' color='white' size={15} />
                                 </TouchableScale>
 
                                 <TouchableScale activeScale={1.3} style={styles.articleActionButton}>
-                                    <Icon name='md-share' type='ionicon' color='white' />
+                                    <Icon name='md-share' type='ionicon' color='white' size={15} />
                                 </TouchableScale>
                             </View>
                             
@@ -77,8 +76,8 @@ const styles = StyleSheet.create({
 
     imgContainer: {
         elevation: 5, 
-        height: '35%', 
-        borderRadius: 15,
+        height: '30%', 
+        borderRadius: 10,
         marginHorizontal: 20, 
     },
     articleActionContainer: {
@@ -87,15 +86,14 @@ const styles = StyleSheet.create({
         bottom: 10, 
         right: 10,
         zIndex: 1,
-        borderRadius: 15,
     },
     articleActionButton: {          
         alignItems: 'center', 
         justifyContent: 'center',
         backgroundColor: colors.accent, 
-        width: 40, height: 40,
-        elevation: 3,
-        borderRadius: 20,
+        width: 30, height: 30,
+        elevation: 2,
+        borderRadius: 15,
     },
 
     divider: { 
@@ -105,13 +103,11 @@ const styles = StyleSheet.create({
     },
 
     content: {
-        height: 800,
-        borderRadius: 15,
-        marginHorizontal: 20,
-        elevation: 5, 
+        height: 600,
+        borderRadius: 10,
+        marginHorizontal: 10,
         paddingHorizontal: 20, 
         paddingVertical: 10, 
-        backgroundColor: 'white', 
     },
     
 })

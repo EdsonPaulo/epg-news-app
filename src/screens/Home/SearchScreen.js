@@ -1,29 +1,60 @@
 import React, { Component } from 'react'
-import { Text, View, Button } from 'react-native'
+import axios from 'axios';
+
+import { Text, View, ScrollView } from 'react-native'
 
 import { SearchBar, Icon, Input, Header  } from 'react-native-elements';
 
+import { Actions } from 'react-native-router-flux';
+
 import TouchableScale from 'react-native-touchable-scale'
 
+import {VerticalList, FetchStatus} from '../../components/News';
+
 import { fonts, colors, metrics } from '../../constants';
-import { Actions } from 'react-native-router-flux';
 
 import styles from './styles'
 
+
 export default class SearchScreen extends Component {
 
-    state = {
-        search: '',
+    constructor(props) {
+        super(props);
+        this.state = {
+            searchQuery: '',
+
+            searchedArticles: [],
+
+            isLoading: false,
+            error: null,
+        };
+    }
+
+    updateSearch = searchQuery => {
+        this.setState({ searchQuery });
     };
 
-    updateSearch = search => {
-        this.setState({ search });
+    async fetchSearchArcticles (query) {
+        const API_KEY = '923fe32cc9b14b15989b4fb574bc57a9';
+        let articlesData = [];
+        const API = `http://newsapi.org/v2/everything?q=${query}&language=pt&pageSize=10&apiKey=${API_KEY}`;
+        this.setState({ isLoading: true });
+        try {
+            const result = await axios.get(API)
+            articlesData = result.data.articles;
+            this.setState({ searchedArticles: articlesData })
+        }
+        catch (error) { 
+            this.setState({ error })
+            //return null
+        }
+        finally { this.setState({ isLoading: false })  }
+    }
 
-    };
 
     render() {
 
-        const { search } = this.state;
+        const { searchQuery,searchedArticles, error, isLoading } = this.state;
 
         return (
             <View>
@@ -46,15 +77,23 @@ export default class SearchScreen extends Component {
                         round
                         placeholder="Digite o termo a pesquisar..."
                         onChangeText={this.updateSearch}
-                        value={search}
+                        value={searchQuery}
                     />
    
                       
 
-                    <TouchableScale style={{ margin: 20,  borderRadius: 8,  backgroundColor: colors.accent, padding: 8 }}
-                        activeScale={0.9}>
+                    <TouchableScale style={{ margin: 10,  borderRadius: 8,  backgroundColor: colors.accent, padding: 8 }}
+                        activeScale={0.9} onPress={() => { this.fetchSearchArcticles(searchQuery) }}>
                         <Text style={{color: 'white', textAlign: 'center'}}>PESQUISAR</Text> 
                     </TouchableScale>
+
+                    <ScrollView showsVerticalScrollIndicator={false} style={{ }}>
+                    
+                        <FetchStatus articles={searchedArticles} isLoading={isLoading} error={error}  />
+
+                        <VerticalList articles={searchedArticles} />
+                    
+                    </ScrollView>
 
 
 

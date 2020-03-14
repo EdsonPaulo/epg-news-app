@@ -1,24 +1,15 @@
 const colors = {
-    header: '#333333',
-
-    bgColor: '#fff',
-
-    bgColor: '#F1F3FD',
+    
     bgColor: 'whitesmoke',
-    bgColor: '#FBFBFB',
-    bgColor: '#f1f2f6',
-
+    bgColor: '#F1F3FD',
+    bgColor: 'white',
 
     primaryDark: '#1e3c72',
     primary: '#57606f',
     primaryLight: '#747d8c', 
 
     primaryDark: '#34495e',
-
-
-    accent: '#2a5298',
-    accent: '#0a3d62',
-    accent: '#dc143c',
+ 
     accent: 'crimson',
    
     /** 

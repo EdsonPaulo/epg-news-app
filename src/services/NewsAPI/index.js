@@ -16,8 +16,6 @@ export default class index extends Component {
             sportsArticles: [],
             entertainmentArticles: [],
 
-            searchArticles: [],
-
             isLoading: false,
             error: null,
         };
@@ -58,23 +56,6 @@ export default class index extends Component {
         finally { this.setState({ isLoading: false }) }
     }
  
-
-    async fetchSearchArcticles (query) {
-        let articlesData = [];
-        const API = `http://newsapi.org/v2/everything?q=${query}&language=pt&pageSize=10&apiKey=${API_KEY}`;
-        this.setState({ isLoading: true });
-        try {
-            const result = await axios.get(API)
-            articlesData = result.data.articles;
-            this.setState({ searchArticles: articlesData })
-            //return articlesData;
-        }
-        catch (error) { 
-            this.setState({ error })
-            //return null
-        }
-        finally { this.setState({ isLoading: false })  }
-    }
 
 
     render () {
