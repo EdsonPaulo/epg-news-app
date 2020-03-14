@@ -60,42 +60,49 @@ export default class SearchScreen extends Component {
             <View>
 
                 <Header
-                    placement="center"
-                    containerStyle={{paddingHorizontal: 0}}
+                    placement="left"
+                    containerStyle={{  borderBottomWidth: 0}}
                     backgroundColor={colors.white}
                     leftComponent={
                         <TouchableScale onPress={() => Actions.pop()} style={styles.headerButton} activeScale={1.3}>
                             <Icon name='ios-arrow-back' type='ionicon' color='black' />
                         </TouchableScale>
-                    }                    
+                    }  
+
+                    centerComponent= {
+                        <SearchBar
+                            containerStyle={{width: '100%', backgroundColor: 'transparent', borderBottomWidth: 0}}
+                            inputContainerStyle={{elevation: 2,  backgroundColor: 'transparent', width: '100%', }}
+                            inputStyle={{color: 'black'}}
+                            placeholder="Pesquisar por..."
+                            round
+                            lightTheme
+                            keyboardType='web-search'
+                            returnKeyType='search'
+                            onSubmitEditing={() => this.fetchSearchArcticles(searchQuery) }
+                            onChangeText={this.updateSearch}
+                            value={searchQuery}
+                        />
+                    }
                   
                 />
-                
-                    <SearchBar
-                    containerStyle={{backgroundColor: 'transparent'}}
-                        lightTheme
-                        round
-                        placeholder="Digite o termo a pesquisar..."
-                        onChangeText={this.updateSearch}
-                        value={searchQuery}
-                    />
-   
-                      
+                   
 
-                    <TouchableScale style={{ margin: 10,  borderRadius: 8,  backgroundColor: colors.accent, padding: 8 }}
-                        activeScale={0.9} onPress={() => { this.fetchSearchArcticles(searchQuery) }}>
-                        <Text style={{color: 'white', textAlign: 'center'}}>PESQUISAR</Text> 
-                    </TouchableScale>
-
-                    <ScrollView showsVerticalScrollIndicator={false} style={{ }}>
-                    
-                        <FetchStatus articles={searchedArticles} isLoading={isLoading} error={error}  />
-
+                <View  style={{ paddingHorizontal: metrics.baseMargin, }} >
+                    <ScrollView showsVerticalScrollIndicator={false} >
+                        {
+                            searchedArticles.length !== 0 ? null :
+                            <View style={{marginTop: 150, alignItems: 'center', justifyContent: 'center', alignSelf: 'center' }}>
+                                 <Icon name='warning' size={50} color={colors.accent} />
+                                 <Text>Nada a mostrar!</Text>
+                                 <Text> Informe um novo termo a pesquisar...</Text>
+                            </View>
+                        }
                         <VerticalList articles={searchedArticles} />
-                    
+
+                        <FetchStatus articles={searchedArticles} isLoading={isLoading} error={error}  />
                     </ScrollView>
-
-
+                </View>
 
 
             </View>
