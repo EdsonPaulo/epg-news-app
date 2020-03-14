@@ -37,7 +37,7 @@ export default class SearchScreen extends Component {
     async fetchSearchArcticles (query) {
         const API_KEY = '923fe32cc9b14b15989b4fb574bc57a9';
         let articlesData = [];
-        const API = `http://newsapi.org/v2/everything?q=${query}&language=pt&pageSize=10&apiKey=${API_KEY}`;
+        const API = `http://newsapi.org/v2/everything?q=${query}&language=pt&pageSize=20&apiKey=${API_KEY}`;
         this.setState({ isLoading: true });
         try {
             const result = await axios.get(API)
@@ -83,7 +83,7 @@ export default class SearchScreen extends Component {
                     }
                 />
                    
-                <View  style={{ paddingHorizontal: metrics.baseMargin, }} >
+                <View  style={{ padding: metrics.baseMargin }} >
                     <ScrollView showsVerticalScrollIndicator={false} >
                     {
                         searchedArticles.length !== 0 ? null :

@@ -26,20 +26,14 @@ export default class index extends Component {
     render() {
         return (
             <NewsContext.Consumer>
-                
                 { (context) => {
-
                     const { generalArticles, isLoading, error } = context;
-
-                  //  console.log(isLoading);
 
                     return (
                         <ScrollView style={styles.container}>
                             <Text>HOME SCREEN</Text>
-                           
-                            <FetchStatus articles={generalArticles} isLoading={isLoading} error={error}  />
-
                             {
+                            /** 
                                 isLoading ? null :
                                 !generalArticles 
                                     ? <Text>Sem dados</Text> :
@@ -52,15 +46,17 @@ export default class index extends Component {
                                         </View>
                                     )
                                 })
+                            */
                             }
+
+                            <FetchStatus articles={generalArticles} isLoading={isLoading} error={error}  />
+
                         </ScrollView>
                     )
-
                      // <VerticalList articles={this.state.articles} />
                     }
                 }
             </NewsContext.Consumer>
-           
         )
     }
 }

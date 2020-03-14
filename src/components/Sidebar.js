@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, StyleSheet, View, StatusBar } from 'react-native'
+import { Text, StyleSheet, View, StatusBar, Switch } from 'react-native'
 import { colors, metrics } from '../constants'
 import TouchableScale from 'react-native-touchable-scale'
 import { Icon } from 'react-native-elements'
@@ -14,6 +14,10 @@ const Sidebar = () => {
             </View>
 
             <View style={styles.menuContainer}>
+
+                <Switch
+                    style={{ marginTop: 30 }}
+                />
         
                 <TouchableScale style={styles.menuItem}>
                     <Icon name='person' color={colors.primaryDark} />

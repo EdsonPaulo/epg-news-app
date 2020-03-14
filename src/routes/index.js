@@ -76,7 +76,7 @@ import NewsContextProvider from '../services/NewsAPI';
                     navBar={() => 
                       <Header 
                           placement="center"
-                          containerStyle={{elevation: 4}}
+                          containerStyle={{borderBottomWidth: 0}}
                           backgroundColor={colors.white}
                           leftComponent={
                             <TouchableScale onPress={() => Actions.drawerOpen()} style={styles.headerButton} activeScale={1.3}>
