@@ -71,40 +71,35 @@ export default class SearchScreen extends Component {
 
                     centerComponent= {
                         <SearchBar
-                            containerStyle={{width: '100%', backgroundColor: 'transparent', borderBottomWidth: 0}}
+                            containerStyle={{width: '100%', backgroundColor: 'transparent', borderBottomWidth: 0, borderTopWidth: 0}}
                             inputContainerStyle={{elevation: 2,  backgroundColor: 'transparent', width: '100%', }}
                             inputStyle={{color: 'black'}}
                             placeholder="Pesquisar por..."
                             round
-                            lightTheme
                             keyboardType='web-search'
                             returnKeyType='search'
-                            onSubmitEditing={() => this.fetchSearchArcticles(searchQuery) }
+                            onSubmitEditing={ () => this.fetchSearchArcticles(searchQuery) }
                             onChangeText={this.updateSearch}
                             value={searchQuery}
                         />
                     }
-                  
                 />
                    
-
                 <View  style={{ paddingHorizontal: metrics.baseMargin, }} >
                     <ScrollView showsVerticalScrollIndicator={false} >
-                        {
-                            searchedArticles.length !== 0 ? null :
-                            <View style={{marginTop: 150, alignItems: 'center', justifyContent: 'center', alignSelf: 'center' }}>
-                                 <Icon name='warning' size={50} color={colors.accent} />
-                                 <Text>Nada a mostrar!</Text>
-                                 <Text> Informe um novo termo a pesquisar...</Text>
-                            </View>
-                        }
+                    {
+                        searchedArticles.length !== 0 ? null :
+                        <View style={{marginTop: 150, alignItems: 'center', justifyContent: 'center', alignSelf: 'center' }}>
+                                <Icon name='warning' size={50} color={colors.accent} />
+                                <Text>Nada a mostrar!</Text>
+                                <Text> Informe um novo termo a pesquisar...</Text>
+                        </View>
+                    }
                         <VerticalList articles={searchedArticles} />
 
                         <FetchStatus articles={searchedArticles} isLoading={isLoading} error={error}  />
                     </ScrollView>
                 </View>
-
-
             </View>
         )
     }
