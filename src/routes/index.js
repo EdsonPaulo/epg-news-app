@@ -97,15 +97,16 @@ import NewsContextProvider from '../services/NewsAPI';
                    
                     tabBarStyle={styles.container}>
 
-                    <Scene key="home" component={Home} title="HOME" />
 
-                    <Scene key="technology"  component={Technology} title="TECNOLOGIA" />
+                    <Scene key="technology"  component={Technology} title="Tecnologia" />
                     
-                    <Scene key="science"  component={Science} title="CIÊNCIA" />
+                    <Scene key="science"  component={Science} title="Ciência" />
+
+                    <Scene key="home" component={Home} title="Home" initial />
                     
-                    <Scene key="entertainment"  component={Entertainment} title="ENTRETIMENTO" />
+                    <Scene key="entertainment"  component={Entertainment} title="Entretenimento" />
                     
-                    <Scene key="sport" component={Sport} title="DESPORTO" />
+                    <Scene key="sport" component={Sport} title="Desporto" />
                 </Scene>
 
                 <Scene key='search' hideNavBar component={SearchScreen} title='PESQUISAR' />
