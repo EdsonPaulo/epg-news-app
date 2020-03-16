@@ -52,7 +52,7 @@ export default class SearchScreen extends Component {
     }
 
     render() {
-        const { searchQuery,searchedArticles, error, isLoading } = this.state;
+        const { searchQuery, searchedArticles, error, isLoading } = this.state;
 
         return (
             <View>
@@ -78,6 +78,7 @@ export default class SearchScreen extends Component {
                             returnKeyType='search'
                             onSubmitEditing={ () => this.fetchSearchArcticles(searchQuery) }
                             onChangeText={this.updateSearch}
+                            onClear={() => this.setState({ searchedArticles: [] })}
                             value={searchQuery}
                         />
                     }
@@ -87,10 +88,11 @@ export default class SearchScreen extends Component {
                     <ScrollView showsVerticalScrollIndicator={false} >
                     {
                         searchedArticles.length !== 0 ? null :
+                        isLoading ? null :
                         <View style={{marginTop: 150, alignItems: 'center', justifyContent: 'center', alignSelf: 'center' }}>
-                            <Icon name='warning' size={50} color={colors.accent} />
+                            <Icon name='search-web' type='material-community' size={50} color={colors.primary} />
                             <Text>Nada a mostrar!</Text>
-                            <Text> Informe um novo termo a pesquisar...</Text>
+                            <Text>Informe um novo termo a pesquisar...</Text>
                         </View>
                     }
                         <VerticalList articles={searchedArticles} />

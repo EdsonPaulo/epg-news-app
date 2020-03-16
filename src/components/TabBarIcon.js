@@ -16,12 +16,13 @@ const TabBarIcon = ({ focused, title }) => {
         title === 'Entretenimento' ? 'play-box-outline' : '';
 
     const activeTabStyle = focused ? styles.activeTabText : styles.inactiveTabText;
+    const homeTabColor = focused ? colors.accent : colors.primaryDark;
 
     return (
         <View>
         {
             title === 'Home' ?
-            <View style={styles.activeHomeTabStyle}>
+            <View style={[styles.homeTabStyle, {backgroundColor: homeTabColor}]}>
                 <MaterialCommunityIcons size={25} color='white' name={focused ? 'home' : 'home-outline'} />
             </View>
             :
@@ -47,11 +48,8 @@ const styles = StyleSheet.create({
     },
     inactiveTabText: { 
         color: colors.grayDark,
-
-
     },
-    activeHomeTabStyle: {
-        backgroundColor: colors.accent,
+    homeTabStyle: {
         borderRadius: 15,
         width: 40,
         height: 40,

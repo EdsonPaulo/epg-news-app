@@ -2,7 +2,7 @@ import React from 'react';
 
 import { View , Text, ScrollView, StyleSheet, ActivityIndicator, StatusBar} from 'react-native';
 
-import { Image, Icon, Header, Divider } from 'react-native-elements';
+import { Image, Icon, Divider } from 'react-native-elements';
 import TouchableScale from 'react-native-touchable-scale';
 import {Actions} from 'react-native-router-flux'
 
