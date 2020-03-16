@@ -1,12 +1,11 @@
 import React from 'react';
 
-import { View , Text, ScrollView, StyleSheet, ActivityIndicator} from 'react-native';
+import { View , Text, ScrollView, StyleSheet, ActivityIndicator, StatusBar} from 'react-native';
 
 import { Image, Icon, Header, Divider } from 'react-native-elements';
 import TouchableScale from 'react-native-touchable-scale';
 import {Actions} from 'react-native-router-flux'
 
-import globalStyles from './styles';
 import { metrics, colors } from '../../constants';
 
 import DateFormat from '../../util/DateFormat'
@@ -14,36 +13,22 @@ import DateFormat from '../../util/DateFormat'
 
 const ArticleScreen = ( article ) => {
     
-
     return (
         <View style={{flex: 1, backgroundColor: colors.bgColor}}> 
-                <Header backgroundColor={'gray'}
-                    leftComponent={
-                        <TouchableScale activeScale={1.3} onPress={() => Actions.pop()} 
-                            style={[globalStyles.headerButton, {
-                                justifyContent:  'center',
-                                alignItems: 'center',
-                                backgroundColor: 'green',
-                                borderRadius: 10,
-                                width: 40,
-                                height: 40
+        
+            <TouchableScale activeScale={0.8} onPress={() => Actions.pop()} 
+                style={styles.headerButton}>
+                <Icon name='ios-arrow-back' type='ionicon' color='black' />
+            </TouchableScale>
 
-                            }]} >
-                            <Icon name='ios-arrow-back' type='ionicon' color='black' />
-                        </TouchableScale>
-                    }                    
-                />
+            <ScrollView showsVerticalScrollIndicator={false} >
 
-                <ScrollView showsVerticalScrollIndicator={false}
-                    style={{overflow: 'scroll'}}>
-                   
-
-                        <View style={styles.imgContainer}>
-
-                            <Image resizeMode='stretch' borderRadius={10} 
+                        <View style={styles.topContainer}>
+                            <Image resizeMode='stretch' 
                                 source={{uri: article.urlToImage}} 
                                 PlaceholderContent={ <ActivityIndicator size='large' color={colors.accent} />} 
-                                style={{width: '100%', height: '100%'}} />
+                                style={{width: '100%', height: '100%'}}  />
+
 
                             <View style={styles.articleActionContainer}>
                                 <TouchableScale activeScale={1.3} style={[styles.articleActionButton, { marginRight: 15}]}>
@@ -54,41 +39,52 @@ const ArticleScreen = ( article ) => {
                                     <Icon name='md-share' type='ionicon' color='white' size={15} />
                                 </TouchableScale>
                             </View>
-                            
                         </View>
-
-
-                        <Divider style={styles.divider} />
-
 
                         <View  style={styles.content}>
-                        
-                            <Text style={{fontSize: 16, fontWeight: 'bold', textAlign: 'center', marginBottom: 20}}> {article.title}</Text>
+                            <Text style={{fontSize: 16, fontWeight: 'bold', textAlign: 'justify'}}> {article.title}</Text>
                             
-                            <Text style={{fontSize: 16, textAlign: 'justify'}}> {'\n'+article.description + '\n\n' + article.content}</Text>
+                            <Divider style={styles.divider} />
+
+                            <Text style={{fontSize: 15, textAlign: 'justify'}}> {article.description + '\n\n' + article.content}</Text>
                             
-                            <Text style={{fontSize: 13, textAlign: 'right', marginVertical: 30, color: colors.grayDark}}> 
+                            <Text style={{fontSize: 13, textAlign: 'right', marginTop: 20, color: colors.grayDark}}> 
                                 { DateFormat(article.publishedAt) } 
                             </Text>
-                          
                         </View>
                   
-
+                    <TouchableScale 
+                        style={{borderRadius: 10, 
+                            backgroundColor: colors.accent, 
+                            margin: 30, padding: 5, 
+                            alignItems: 'center' 
+                            }}>
+                                
+                        <Text style={{color: 'white'}}>Ler na página original</Text>
+                    </TouchableScale>
                 </ScrollView>
-
         </View> 
     )
 }
 
-
-
 const styles = StyleSheet.create({
 
-    imgContainer: {
-        elevation: 5, 
-        height: '30%', 
-        borderRadius: 10,
-        marginHorizontal: 20, 
+    headerButton: {
+        position: 'absolute',
+        zIndex: 1,
+        top: StatusBar.currentHeight + metrics.baseMargin,
+        left: metrics.baseMargin,
+        justifyContent:  'center',
+        alignItems: 'center',
+        backgroundColor: 'rgba(255, 255, 255, 0.8)',
+        elevation: metrics.baseMargin,
+        borderRadius: metrics.baseRadius,
+        width: 35,
+        height: 35
+    },
+    topContainer: {
+        height: 250, 
+        elevation: 10
     },
     articleActionContainer: {
         flexDirection: 'row',
@@ -108,13 +104,15 @@ const styles = StyleSheet.create({
 
     divider: { 
         height: 2, 
-        margin: 20, 
+        marginVertical: 15, 
         backgroundColor: colors.grayLight 
     },
 
     content: {
-        textAlign: 'justify',
-        paddingHorizontal: 30, 
+        margin: 15, 
+        padding: 20, 
+        borderRadius: 10,
+        elevation:5,
     },
     
 })
