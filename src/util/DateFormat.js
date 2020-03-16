@@ -39,9 +39,9 @@ export default function DateFormat (dateString) {
     const weekday = weekdayList[ date.getDay() ]; //.getDay retorna de 0-6
     const month = monthsList[ date.getMonth() ];  //.getMoth de 0-11
 
-    const dateFormated = `${weekday}, ${day} de ${month}, ${year}`
+    const dateFormated = `${weekday}, ${day} de ${month}`
 
-    console.log(dateFormated);
+    //console.log(dateFormated);
 
-    return dateFormated;
+    return dateFormated.toLowerCase();
 }

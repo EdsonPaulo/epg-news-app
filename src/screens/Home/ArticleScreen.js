@@ -2,7 +2,7 @@ import React from 'react';
 
 import { View , Text, ScrollView, StyleSheet, ActivityIndicator} from 'react-native';
 
-import { Image, Icon, Header } from 'react-native-elements';
+import { Image, Icon, Header, Divider } from 'react-native-elements';
 import TouchableScale from 'react-native-touchable-scale';
 import {Actions} from 'react-native-router-flux'
 
@@ -16,17 +16,27 @@ const ArticleScreen = ( article ) => {
     
 
     return (
-        <View style={globalStyles.container}> 
-                <Header backgroundColor={'white'}
+        <View style={{flex: 1, backgroundColor: colors.bgColor}}> 
+                <Header backgroundColor={'gray'}
                     leftComponent={
-                        <TouchableScale onPress={() => Actions.pop()} style={globalStyles.headerButton} activeScale={1.3}>
+                        <TouchableScale activeScale={1.3} onPress={() => Actions.pop()} 
+                            style={[globalStyles.headerButton, {
+                                justifyContent:  'center',
+                                alignItems: 'center',
+                                backgroundColor: 'green',
+                                borderRadius: 10,
+                                width: 40,
+                                height: 40
+
+                            }]} >
                             <Icon name='ios-arrow-back' type='ionicon' color='black' />
                         </TouchableScale>
                     }                    
                 />
 
-                <ScrollView>
-                    <View  style={{ height: '100%'}}>
+                <ScrollView showsVerticalScrollIndicator={false}
+                    style={{overflow: 'scroll'}}>
+                   
 
                         <View style={styles.imgContainer}>
 
@@ -48,7 +58,7 @@ const ArticleScreen = ( article ) => {
                         </View>
 
 
-                        <View style={styles.divider} />
+                        <Divider style={styles.divider} />
 
 
                         <View  style={styles.content}>
@@ -62,7 +72,7 @@ const ArticleScreen = ( article ) => {
                             </Text>
                           
                         </View>
-                    </View>
+                  
 
                 </ScrollView>
 
@@ -103,11 +113,8 @@ const styles = StyleSheet.create({
     },
 
     content: {
-        height: 600,
-        borderRadius: 10,
-        marginHorizontal: 10,
-        paddingHorizontal: 20, 
-        paddingVertical: 10, 
+        textAlign: 'justify',
+        paddingHorizontal: 30, 
     },
     
 })
