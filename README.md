@@ -4,7 +4,7 @@
 
 News app built with react native.
 
-In that project, I got skills like:
+In that project, I got and I will get skills like:
 
 <ul>
   <li> ContextAPI; </li>
